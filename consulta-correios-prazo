@@ -1,0 +1,721 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Prazo v3",
+    "description": "Consula de prazo \u003Cbr /\u003E\u003Cb\u003ETipo da disponibilização: \u003C/b\u003E ambas\u003Cbr /\u003E\u003Cbr/\u003E\u003Cb\u003EClassificação de acesso interno:\u003C/b\u003E público\u003Cbr /\u003E\u003Cb\u003EClassificação de acesso externo:\u003C/b\u003E restrito\u003Cbr /\u003E\u003Cb\u003ETipo de autorização externa:\u003C/b\u003E contrato\u003Cbr /\u003E\u003Cb\u003EExige serviço:\u003C/b\u003E não\u003Cbr /\u003E\u003C/div\u003E",
+    "version": "3.8.55",
+    "x-nuApi": 35,
+    "x-serviceId": "prazo",
+    "x-ambiente": "PRODUCAO"
+  },
+  "servers": [
+    {
+      "url": "https://api.correios.com.br/prazo",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Nacional",
+      "description": "Prazo de produtos e serviços nacionais."
+    },
+    {
+      "name": "Data prevista",
+      "description": "Calcula a data prevista de entrega."
+    },
+    {
+      "name": "Internacional",
+      "description": "Prazo de produtos e serviços internacionais."
+    }
+  ],
+  "paths": {
+    "/v1/nacional": {
+      "post": {
+        "tags": [
+          "Nacional"
+        ],
+        "summary": "Consulta prazo de uma lista de produtos",
+        "operationId": "listaPrazos",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoteParamPrazoNacional"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PrazoNacional"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/internacional": {
+      "post": {
+        "tags": [
+          "Internacional"
+        ],
+        "summary": "Consulta prazo de uma lista de produtos",
+        "operationId": "listaPrazos_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoteParamPrazoInternacional"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PrazoInternacional"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nacional/{coProduto}": {
+      "get": {
+        "tags": [
+          "Nacional"
+        ],
+        "summary": "Consulta prazo de um produto/serviço.",
+        "operationId": "consultaPrazoNacional",
+        "parameters": [
+          {
+            "name": "coProduto",
+            "in": "path",
+            "description": "Código do produto ou serviço",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": 45110
+          },
+          {
+            "name": "cepOrigem",
+            "in": "query",
+            "description": "CEP de origem da postagem.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": 70902000
+          },
+          {
+            "name": "cepDestino",
+            "in": "query",
+            "description": "CEP de destino da postagem.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": 71930000
+          },
+          {
+            "name": "dtEvento",
+            "in": "query",
+            "description": "Data que será usado para o cálculo o preço. DD-MM-YYYY",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrazoNacional"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/internacional/{coProduto}": {
+      "get": {
+        "tags": [
+          "Internacional"
+        ],
+        "summary": "Consulta prazo de um produto/serviço.",
+        "operationId": "consultaPrazoInternacional",
+        "parameters": [
+          {
+            "name": "coProduto",
+            "in": "path",
+            "description": "Código do produto ou serviço",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": 45179
+          },
+          {
+            "name": "cepOrigem",
+            "in": "query",
+            "description": "CEP de origem da postagem.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": 72720290
+          },
+          {
+            "name": "sgPaisDestino",
+            "in": "query",
+            "description": "Sigla do país de destino.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "DE"
+          },
+          {
+            "name": "coCidadeDestino",
+            "in": "query",
+            "description": "Código da cidade de destino. Apenas para serviço internacional.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "00178934"
+          },
+          {
+            "name": "dtEvento",
+            "in": "query",
+            "description": "Data que será usado para o cálculo o preço. DD-MM-YYYY",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrazoInternacional"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/data-prevista": {
+      "get": {
+        "tags": [
+          "Data prevista"
+        ],
+        "summary": "Calcula a data prevista de entrega baseada no município, data de postagem e prazo em dias.",
+        "operationId": "consultaDataPrevista",
+        "parameters": [
+          {
+            "name": "cepOrigem",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "pattern": "[0-9]{8}",
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepDestino",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "pattern": "[0-9]{8}",
+              "type": "string"
+            }
+          },
+          {
+            "name": "prazo",
+            "in": "query",
+            "description": "Prazo em dias.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "dtPostagem",
+            "in": "query",
+            "description": "Data da postagem. DD-MM-YYYY",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "isEncomendaUPU",
+            "in": "query",
+            "description": "Indica se é encomenda da UPU (true ou false)",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "isSabadoDiaUtil",
+            "in": "query",
+            "description": "Verifica se o sábado é considerado como dia útil (true ou false)",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "isDomingoDiaUtil",
+            "in": "query",
+            "description": "Verifica se o domingo é considerado como dia útil (true ou false)",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataPrevistaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoteParamPrazoNacional": {
+        "required": [
+          "idLote",
+          "parametrosPrazo"
+        ],
+        "type": "object",
+        "properties": {
+          "idLote": {
+            "type": "string",
+            "description": "Identificador do lote da consulta."
+          },
+          "parametrosPrazo": {
+            "type": "array",
+            "description": "Lista dos parâmetros de consulta.",
+            "items": {
+              "$ref": "#/components/schemas/ParamPrazoNacional"
+            }
+          }
+        },
+        "description": "lote"
+      },
+      "ParamPrazoNacional": {
+        "required": [
+          "cepDestino",
+          "cepOrigem",
+          "coProduto"
+        ],
+        "type": "object",
+        "properties": {
+          "coProduto": {
+            "type": "string",
+            "description": "Código do produto",
+            "example": "04162"
+          },
+          "nuRequisicao": {
+            "type": "string",
+            "description": "Número informado e controlado pelo requisitante."
+          },
+          "dtEvento": {
+            "type": "string",
+            "description": "Data que será usado para o cálculo o prazo. Formato DD/MM/YYYY. Caso não informado, será considerada a data atual."
+          },
+          "cepOrigem": {
+            "type": "string",
+            "description": "CEP de origem da postagem."
+          },
+          "cepDestino": {
+            "type": "string",
+            "description": "CEP de destino da postagem."
+          },
+          "dataPostagem": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "description": "Lista dos parâmetros de consulta."
+      },
+      "PrazoNacional": {
+        "type": "object",
+        "properties": {
+          "coProduto": {
+            "type": "string",
+            "description": "Código do produto ou serviço"
+          },
+          "nuRequisicao": {
+            "type": "string",
+            "description": "Número da requisição. Número informado e controlado pelo requisitante"
+          },
+          "prazoEntrega": {
+            "type": "integer",
+            "description": "Prazo em dias úteis",
+            "format": "int32"
+          },
+          "dataMaxima": {
+            "type": "string",
+            "description": "Data máxima de entrega",
+            "format": "date-time"
+          },
+          "txErro": {
+            "type": "string",
+            "description": "Descricao do erro retornado"
+          },
+          "entregaDomiciliar": {
+            "type": "string",
+            "description": "Indicador de entrega domiciliar"
+          },
+          "entregaSabado": {
+            "type": "string",
+            "description": "Indicador de entrega aos sábados"
+          },
+          "entregaDomingo": {
+            "type": "string",
+            "description": "Indicador de entrega aos domingos"
+          },
+          "msgPrazo": {
+            "type": "string",
+            "description": "Mensagem de prazo"
+          }
+        }
+      },
+      "LoteParamPrazoInternacional": {
+        "required": [
+          "idLote",
+          "parametrosPrazo"
+        ],
+        "type": "object",
+        "properties": {
+          "idLote": {
+            "type": "string",
+            "description": "Identificador do lote da consulta."
+          },
+          "parametrosPrazo": {
+            "type": "array",
+            "description": "Lista dos parâmetros de consulta.",
+            "items": {
+              "$ref": "#/components/schemas/ParamPrazoInternacional"
+            }
+          }
+        },
+        "description": "lote"
+      },
+      "ParamPrazoInternacional": {
+        "type": "object",
+        "properties": {
+          "coProduto": {
+            "type": "string",
+            "description": "Código do Produto."
+          },
+          "nuRequisicao": {
+            "type": "string",
+            "description": "Número da requisição.Número informado e controlado pelo requisitante."
+          },
+          "dtEvento": {
+            "type": "string",
+            "description": "Data que será usado para o cálculo o prazo. Caso não informado, será considerada a data atual."
+          },
+          "cepOrigem": {
+            "type": "string",
+            "description": "CEP de origem da postagem."
+          },
+          "sgPaisDestino": {
+            "type": "string",
+            "description": "Sigla do País de destino."
+          },
+          "coCidadeDestino": {
+            "type": "string",
+            "description": "Código MCU da cidade de destino."
+          }
+        },
+        "description": "Lista dos parâmetros de consulta."
+      },
+      "InfoAdicional": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "description": "Código da informação complementar.",
+            "enum": [
+              "LOB_ERP",
+              "LIMITE_MAX_TARIFACAO_ERP",
+              "VALOR_PARAMETRO_KILO_ADICIONAL_ERP",
+              "LOB_SGPB",
+              "NU_PROPOSTA",
+              "CO_MODELO",
+              "CO_SIMILARIDADE",
+              "IN_EXIGENCIA_CEP_DESTINO",
+              "CO_AGRUPADOR",
+              "TIPO_AGRUPADOR",
+              "NU_CORREDOR_ORIGEM",
+              "NU_CORREDOR_DESTINO",
+              "NU_TABELA_FATOR",
+              "NU_LINHA_FATOR",
+              "NU_COLUNA_FATOR",
+              "NO_COLUNA_FATOR",
+              "CLASSIFICACAO_COLUNA",
+              "NU_COMBO",
+              "NU_VARIACAO",
+              "VL_PRECO_BASE",
+              "FATOR_FAIXA",
+              "FATOR_CADA_ADICIONAL",
+              "QT_EXCESSO",
+              "NO_PRODUTO",
+              "TP_TARIFACAO_ERP",
+              "IN_CORREDOR_FAIXA_CEP_SGPB",
+              "IN_PRECIFICACAO_SGPB",
+              "VL_TAXA_EXTRA"
+            ]
+          },
+          "valor": {
+            "type": "string",
+            "description": "Conteúdo da informação complementar."
+          }
+        },
+        "description": "Lista de informações adicionais"
+      },
+      "PrazoInternacional": {
+        "type": "object",
+        "properties": {
+          "coProduto": {
+            "type": "string",
+            "description": "Código do produto ou serviço"
+          },
+          "noProduto": {
+            "type": "string",
+            "description": "Nome do produto ou serviço"
+          },
+          "nuRequisicao": {
+            "type": "string",
+            "description": "Número da requisição. Número informado e controlado pelo requisitante"
+          },
+          "modalidade": {
+            "type": "string",
+            "description": "Modalidade"
+          },
+          "noCidadeDestino": {
+            "type": "string",
+            "description": "Nome da cidade de destino"
+          },
+          "prazoMinimo": {
+            "type": "integer",
+            "description": "Prazo mínimo em dias",
+            "format": "int32"
+          },
+          "prazoMaximo": {
+            "type": "integer",
+            "description": "Prazo máximo em dias",
+            "format": "int32"
+          },
+          "txErro": {
+            "type": "string",
+            "description": "Descricao do erro retornado"
+          },
+          "infoAdicionais": {
+            "type": "array",
+            "description": "Lista de informações adicionais",
+            "items": {
+              "$ref": "#/components/schemas/InfoAdicional"
+            }
+          },
+          "dataMinEntrega": {
+            "type": "string",
+            "description": "Data mínima de entrega.",
+            "format": "date-time"
+          },
+          "dataMaxEntrega": {
+            "type": "string",
+            "description": "Data máxima de entrega.",
+            "format": "date-time"
+          }
+        }
+      },
+      "DataPrevistaResponse": {
+        "type": "object",
+        "properties": {
+          "dataPrevista": {
+            "type": "string",
+            "description": "Data prevista de entrega.",
+            "format": "date-time"
+          }
+        }
+      },
+      "MessageResponse": {
+        "type": "object",
+        "properties": {
+          "msgs": {
+            "type": "array",
+            "description": "Mensagens",
+            "items": {
+              "type": "string",
+              "description": "Mensagens"
+            }
+          },
+          "date": {
+            "type": "string",
+            "description": "Data e hora de ocorrência do evento.",
+            "format": "date-time"
+          },
+          "method": {
+            "type": "string",
+            "description": "Método HTTP que foi requisitado."
+          },
+          "path": {
+            "type": "string",
+            "description": "URL que foi requisitada."
+          },
+          "causa": {
+            "type": "string",
+            "description": "A causa da mensagem."
+          },
+          "stackTrace": {
+            "type": "string",
+            "description": "Detalhe da mensagem."
+          }
+        }
+      }
+    }
+  }
+}
