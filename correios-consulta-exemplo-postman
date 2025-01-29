@@ -1,0 +1,1307 @@
+{
+	"info": {
+		"_postman_id": "a60c57b7-2005-4f2f-813a-e435eea1d364",
+		"name": "Preço",
+		"description": "Consulta de preços de produtos e serviços",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20682462"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "nacional",
+					"item": [
+						{
+							"name": "{coProduto}",
+							"item": [
+								{
+									"name": "Consulta preço de um produto/serviço.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/nacional/:coProduto?cepDestino=<string>&nuRequisicao=<string>&nuContrato=<string>&nuDR=<string>&cepOrigem=<string>&psObjeto=<string>&nuUnidade=<string>&tpObjeto=<string>&comprimento=<string>&largura=<string>&altura=<string>&diametro=<string>&psCubico=<string>&servicosAdicionais=<string>&criterios=<string>&vlDeclarado=<string>&dtEvento=<string>&coUnidadeOrigem=<string>&dtArmazenagem=<string>&vlRemessa=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"nacional",
+												":coProduto"
+											],
+											"query": [
+												{
+													"key": "cepDestino",
+													"value": "<string>",
+													"description": "CEP de destino da postagem."
+												},
+												{
+													"key": "nuRequisicao",
+													"value": "<string>",
+													"description": "Número da requisição. Número informado e controlado pelo requisitante do serviço."
+												},
+												{
+													"key": "nuContrato",
+													"value": "<string>",
+													"description": "Número do contrato."
+												},
+												{
+													"key": "nuDR",
+													"value": "<string>",
+													"description": "Número da DR do contrato."
+												},
+												{
+													"key": "cepOrigem",
+													"value": "<string>",
+													"description": "CEP de origem da postagem."
+												},
+												{
+													"key": "psObjeto",
+													"value": "<string>",
+													"description": "Peso do objeto em gramas."
+												},
+												{
+													"key": "nuUnidade",
+													"value": "<string>",
+													"description": "Número de unidades prestadas no atendimento. Número de páginas, palavras, minutos."
+												},
+												{
+													"key": "tpObjeto",
+													"value": "<string>",
+													"description": "Tipo do objeto da postagem: 1 - Envelope, 2 - Pacote; 3 - Rolo."
+												},
+												{
+													"key": "comprimento",
+													"value": "<string>",
+													"description": "Comprimento do objeto, em centímetros."
+												},
+												{
+													"key": "largura",
+													"value": "<string>",
+													"description": "Largura do objeto, em centímetros."
+												},
+												{
+													"key": "altura",
+													"value": "<string>",
+													"description": "Altura do objeto, em centímetros."
+												},
+												{
+													"key": "diametro",
+													"value": "<string>",
+													"description": "Diâmetro do objeto, em centímetros."
+												},
+												{
+													"key": "psCubico",
+													"value": "<string>",
+													"description": "Peso cúbico do objeto em gramas."
+												},
+												{
+													"key": "servicosAdicionais",
+													"value": "<string>",
+													"description": "Lista de serviços adicionais"
+												},
+												{
+													"key": "criterios",
+													"value": "<string>",
+													"description": "Lista dos criterios de desconto funcional"
+												},
+												{
+													"key": "vlDeclarado",
+													"value": "<string>",
+													"description": "Valor declarado associado ao serviço."
+												},
+												{
+													"key": "dtEvento",
+													"value": "<string>",
+													"description": "Data que será usado para o cálculo do preço. DD-MM-YYYY"
+												},
+												{
+													"key": "coUnidadeOrigem",
+													"value": "<string>",
+													"description": "Código MCMCU da unidade de origem para precificar conforme canal de postagem"
+												},
+												{
+													"key": "dtArmazenagem",
+													"value": "<string>",
+													"description": "Data de armazenagem, para os serviços que ganham isenção de preço, conforme a data de armazenagem. Formato DD-MM-YYYY"
+												},
+												{
+													"key": "vlRemessa",
+													"value": "<string>",
+													"description": "Valor de remessa de valores monetários."
+												}
+											],
+											"variable": [
+												{
+													"key": "coProduto",
+													"value": "<string>",
+													"description": "(Required) Código do produto ou serviço"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "https://api.correios.com.br/preco/v1/nacional/:coProduto?cepDestino=<string>&nuRequisicao=<string>&nuContrato=<string>&nuDR=<string>&cepOrigem=<string>&psObjeto=<string>&nuUnidade=<string>&tpObjeto=<string>&comprimento=<string>&largura=<string>&altura=<string>&diametro=<string>&psCubico=<string>&servicosAdicionais=<string>&criterios=<string>&vlDeclarado=<string>&dtEvento=<string>&coUnidadeOrigem=<string>&dtArmazenagem=<string>&vlRemessa=<string>",
+													"protocol": "https",
+													"host": [
+														"api",
+														"correios",
+														"com",
+														"br"
+													],
+													"path": [
+														"preco",
+														"v1",
+														"nacional",
+														":coProduto"
+													],
+													"query": [
+														{
+															"key": "cepDestino",
+															"value": "<string>",
+															"description": "CEP de destino da postagem."
+														},
+														{
+															"key": "nuRequisicao",
+															"value": "<string>",
+															"description": "Número da requisição. Número informado e controlado pelo requisitante do serviço."
+														},
+														{
+															"key": "nuContrato",
+															"value": "<string>",
+															"description": "Número do contrato."
+														},
+														{
+															"key": "nuDR",
+															"value": "<string>",
+															"description": "Número da DR do contrato."
+														},
+														{
+															"key": "cepOrigem",
+															"value": "<string>",
+															"description": "CEP de origem da postagem."
+														},
+														{
+															"key": "psObjeto",
+															"value": "<string>",
+															"description": "Peso do objeto em gramas."
+														},
+														{
+															"key": "nuUnidade",
+															"value": "<string>",
+															"description": "Número de unidades prestadas no atendimento. Número de páginas, palavras, minutos."
+														},
+														{
+															"key": "tpObjeto",
+															"value": "<string>",
+															"description": "Tipo do objeto da postagem: 1 - Envelope, 2 - Pacote; 3 - Rolo."
+														},
+														{
+															"key": "comprimento",
+															"value": "<string>",
+															"description": "Comprimento do objeto, em centímetros."
+														},
+														{
+															"key": "largura",
+															"value": "<string>",
+															"description": "Largura do objeto, em centímetros."
+														},
+														{
+															"key": "altura",
+															"value": "<string>",
+															"description": "Altura do objeto, em centímetros."
+														},
+														{
+															"key": "diametro",
+															"value": "<string>",
+															"description": "Diâmetro do objeto, em centímetros."
+														},
+														{
+															"key": "psCubico",
+															"value": "<string>",
+															"description": "Peso cúbico do objeto em gramas."
+														},
+														{
+															"key": "servicosAdicionais",
+															"value": "<string>",
+															"description": "Lista de serviços adicionais"
+														},
+														{
+															"key": "criterios",
+															"value": "<string>",
+															"description": "Lista dos criterios de desconto funcional"
+														},
+														{
+															"key": "vlDeclarado",
+															"value": "<string>",
+															"description": "Valor declarado associado ao serviço."
+														},
+														{
+															"key": "dtEvento",
+															"value": "<string>",
+															"description": "Data que será usado para o cálculo do preço. DD-MM-YYYY"
+														},
+														{
+															"key": "coUnidadeOrigem",
+															"value": "<string>",
+															"description": "Código MCMCU da unidade de origem para precificar conforme canal de postagem"
+														},
+														{
+															"key": "dtArmazenagem",
+															"value": "<string>",
+															"description": "Data de armazenagem, para os serviços que ganham isenção de preço, conforme a data de armazenagem. Formato DD-MM-YYYY"
+														},
+														{
+															"key": "vlRemessa",
+															"value": "<string>",
+															"description": "Valor de remessa de valores monetários."
+														}
+													],
+													"variable": [
+														{
+															"key": "coProduto"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"coProduto\": \"<string>\",\n  \"noProduto\": \"<string>\",\n  \"pcBase\": \"<string>\",\n  \"pcBaseGeral\": \"<string>\",\n  \"peVariacao\": \"<string>\",\n  \"pcReferencia\": \"<string>\",\n  \"beneficios\": [\n    {\n      \"codigo\": \"<string>\",\n      \"tipoBeneficio\": \"BC\",\n      \"tipo\": \"<string>\",\n      \"abrangencia\": \"O\",\n      \"coPacote\": \"<string>\",\n      \"noPacote\": \"<string>\",\n      \"incondicional\": \"<string>\",\n      \"criterio\": [\n        {\n          \"nuCriterio\": \"<string>\",\n          \"noCriterio\": \"<string>\",\n          \"atendido\": \"<string>\",\n          \"peNegociado\": \"<string>\",\n          \"peConcedido\": \"<string>\"\n        },\n        {\n          \"nuCriterio\": \"<string>\",\n          \"noCriterio\": \"<string>\",\n          \"atendido\": \"<string>\",\n          \"peNegociado\": \"<string>\",\n          \"peConcedido\": \"<string>\"\n        }\n      ],\n      \"vlBaseCalculo\": \"<string>\",\n      \"percentual\": \"<string>\",\n      \"valor\": \"<string>\"\n    },\n    {\n      \"codigo\": \"<string>\",\n      \"tipoBeneficio\": \"DF\",\n      \"tipo\": \"<string>\",\n      \"abrangencia\": \"O\",\n      \"coPacote\": \"<string>\",\n      \"noPacote\": \"<string>\",\n      \"incondicional\": \"<string>\",\n      \"criterio\": [\n        {\n          \"nuCriterio\": \"<string>\",\n          \"noCriterio\": \"<string>\",\n          \"atendido\": \"<string>\",\n          \"peNegociado\": \"<string>\",\n          \"peConcedido\": \"<string>\"\n        },\n        {\n          \"nuCriterio\": \"<string>\",\n          \"noCriterio\": \"<string>\",\n          \"atendido\": \"<string>\",\n          \"peNegociado\": \"<string>\",\n          \"peConcedido\": \"<string>\"\n        }\n      ],\n      \"vlBaseCalculo\": \"<string>\",\n      \"percentual\": \"<string>\",\n      \"valor\": \"<string>\"\n    }\n  ],\n  \"vlBaseCalculoImposto\": \"<string>\",\n  \"nuRequisicao\": \"<string>\",\n  \"inPesoCubico\": \"<string>\",\n  \"psCobrado\": \"<string>\",\n  \"servicoAdicional\": [\n    {\n      \"coServAdicional\": \"<string>\",\n      \"tpServAdicional\": \"<string>\",\n      \"pcServicoAdicional\": \"<string>\"\n    },\n    {\n      \"coServAdicional\": \"<string>\",\n      \"tpServAdicional\": \"<string>\",\n      \"pcServicoAdicional\": \"<string>\"\n    }\n  ],\n  \"peAdValorem\": \"<string>\",\n  \"vlSeguroAutomatico\": \"<string>\",\n  \"qtAdicional\": \"<string>\",\n  \"pcFaixa\": \"<string>\",\n  \"pcCadaAdicional\": \"<string>\",\n  \"pcTotalAdicional\": \"<string>\",\n  \"pcFaixaVariacao\": \"<string>\",\n  \"pcCadaAdicionalVariacao\": \"<string>\",\n  \"pcTotalAdicionalVariacao\": \"<string>\",\n  \"vlTotalDescVariacao\": \"<string>\",\n  \"vlTotalBeneficios\": \"<string>\",\n  \"pcProduto\": \"<string>\",\n  \"pcTotalServicosAdicionais\": \"<string>\",\n  \"pcFinal\": \"<string>\",\n  \"txErro\": \"<string>\",\n  \"infoAdicional\": [\n    {\n      \"tipo\": \"LIMITE_MAX_TARIFACAO_ERP\",\n      \"valor\": \"<string>\"\n    },\n    {\n      \"tipo\": \"CO_AGRUPADOR\",\n      \"valor\": \"<string>\"\n    }\n  ],\n  \"nomeProduto\": \"<string>\",\n  \"peIsencaoArmazenagem\": \"<string>\",\n  \"taxaExtra\": [\n    {\n      \"codigo\": \"<string>\",\n      \"tipo\": \"<string>\",\n      \"vlTaxa\": \"<string>\"\n    },\n    {\n      \"codigo\": \"<string>\",\n      \"tipo\": \"<string>\",\n      \"vlTaxa\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Caso ocorra alguma validação necessária por parte do requisitante.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/nacional/:coProduto?cepDestino=<string>&nuRequisicao=<string>&nuContrato=<string>&nuDR=<string>&cepOrigem=<string>&psObjeto=<string>&nuUnidade=<string>&tpObjeto=<string>&comprimento=<string>&largura=<string>&altura=<string>&diametro=<string>&psCubico=<string>&servicosAdicionais=<string>&criterios=<string>&vlDeclarado=<string>&dtEvento=<string>&coUnidadeOrigem=<string>&dtArmazenagem=<string>&vlRemessa=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"nacional",
+														":coProduto"
+													],
+													"query": [
+														{
+															"key": "cepDestino",
+															"value": "<string>",
+															"description": "CEP de destino da postagem."
+														},
+														{
+															"key": "nuRequisicao",
+															"value": "<string>",
+															"description": "Número da requisição. Número informado e controlado pelo requisitante do serviço."
+														},
+														{
+															"key": "nuContrato",
+															"value": "<string>",
+															"description": "Número do contrato."
+														},
+														{
+															"key": "nuDR",
+															"value": "<string>",
+															"description": "Número da DR do contrato."
+														},
+														{
+															"key": "cepOrigem",
+															"value": "<string>",
+															"description": "CEP de origem da postagem."
+														},
+														{
+															"key": "psObjeto",
+															"value": "<string>",
+															"description": "Peso do objeto em gramas."
+														},
+														{
+															"key": "nuUnidade",
+															"value": "<string>",
+															"description": "Número de unidades prestadas no atendimento. Número de páginas, palavras, minutos."
+														},
+														{
+															"key": "tpObjeto",
+															"value": "<string>",
+															"description": "Tipo do objeto da postagem: 1 - Envelope, 2 - Pacote; 3 - Rolo."
+														},
+														{
+															"key": "comprimento",
+															"value": "<string>",
+															"description": "Comprimento do objeto, em centímetros."
+														},
+														{
+															"key": "largura",
+															"value": "<string>",
+															"description": "Largura do objeto, em centímetros."
+														},
+														{
+															"key": "altura",
+															"value": "<string>",
+															"description": "Altura do objeto, em centímetros."
+														},
+														{
+															"key": "diametro",
+															"value": "<string>",
+															"description": "Diâmetro do objeto, em centímetros."
+														},
+														{
+															"key": "psCubico",
+															"value": "<string>",
+															"description": "Peso cúbico do objeto em gramas."
+														},
+														{
+															"key": "servicosAdicionais",
+															"value": "<string>",
+															"description": "Lista de serviços adicionais"
+														},
+														{
+															"key": "criterios",
+															"value": "<string>",
+															"description": "Lista dos criterios de desconto funcional"
+														},
+														{
+															"key": "vlDeclarado",
+															"value": "<string>",
+															"description": "Valor declarado associado ao serviço."
+														},
+														{
+															"key": "dtEvento",
+															"value": "<string>",
+															"description": "Data que será usado para o cálculo do preço. DD-MM-YYYY"
+														},
+														{
+															"key": "coUnidadeOrigem",
+															"value": "<string>",
+															"description": "Código MCMCU da unidade de origem para precificar conforme canal de postagem"
+														},
+														{
+															"key": "dtArmazenagem",
+															"value": "<string>",
+															"description": "Data de armazenagem, para os serviços que ganham isenção de preço, conforme a data de armazenagem. Formato DD-MM-YYYY"
+														},
+														{
+															"key": "vlRemessa",
+															"value": "<string>",
+															"description": "Valor de remessa de valores monetários."
+														}
+													],
+													"variable": [
+														{
+															"key": "coProduto"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+										},
+										{
+											"name": "Caso ocorra algum erro no servidor.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/nacional/:coProduto?cepDestino=<string>&nuRequisicao=<string>&nuContrato=<string>&nuDR=<string>&cepOrigem=<string>&psObjeto=<string>&nuUnidade=<string>&tpObjeto=<string>&comprimento=<string>&largura=<string>&altura=<string>&diametro=<string>&psCubico=<string>&servicosAdicionais=<string>&criterios=<string>&vlDeclarado=<string>&dtEvento=<string>&coUnidadeOrigem=<string>&dtArmazenagem=<string>&vlRemessa=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"nacional",
+														":coProduto"
+													],
+													"query": [
+														{
+															"key": "cepDestino",
+															"value": "<string>",
+															"description": "CEP de destino da postagem."
+														},
+														{
+															"key": "nuRequisicao",
+															"value": "<string>",
+															"description": "Número da requisição. Número informado e controlado pelo requisitante do serviço."
+														},
+														{
+															"key": "nuContrato",
+															"value": "<string>",
+															"description": "Número do contrato."
+														},
+														{
+															"key": "nuDR",
+															"value": "<string>",
+															"description": "Número da DR do contrato."
+														},
+														{
+															"key": "cepOrigem",
+															"value": "<string>",
+															"description": "CEP de origem da postagem."
+														},
+														{
+															"key": "psObjeto",
+															"value": "<string>",
+															"description": "Peso do objeto em gramas."
+														},
+														{
+															"key": "nuUnidade",
+															"value": "<string>",
+															"description": "Número de unidades prestadas no atendimento. Número de páginas, palavras, minutos."
+														},
+														{
+															"key": "tpObjeto",
+															"value": "<string>",
+															"description": "Tipo do objeto da postagem: 1 - Envelope, 2 - Pacote; 3 - Rolo."
+														},
+														{
+															"key": "comprimento",
+															"value": "<string>",
+															"description": "Comprimento do objeto, em centímetros."
+														},
+														{
+															"key": "largura",
+															"value": "<string>",
+															"description": "Largura do objeto, em centímetros."
+														},
+														{
+															"key": "altura",
+															"value": "<string>",
+															"description": "Altura do objeto, em centímetros."
+														},
+														{
+															"key": "diametro",
+															"value": "<string>",
+															"description": "Diâmetro do objeto, em centímetros."
+														},
+														{
+															"key": "psCubico",
+															"value": "<string>",
+															"description": "Peso cúbico do objeto em gramas."
+														},
+														{
+															"key": "servicosAdicionais",
+															"value": "<string>",
+															"description": "Lista de serviços adicionais"
+														},
+														{
+															"key": "criterios",
+															"value": "<string>",
+															"description": "Lista dos criterios de desconto funcional"
+														},
+														{
+															"key": "vlDeclarado",
+															"value": "<string>",
+															"description": "Valor declarado associado ao serviço."
+														},
+														{
+															"key": "dtEvento",
+															"value": "<string>",
+															"description": "Data que será usado para o cálculo do preço. DD-MM-YYYY"
+														},
+														{
+															"key": "coUnidadeOrigem",
+															"value": "<string>",
+															"description": "Código MCMCU da unidade de origem para precificar conforme canal de postagem"
+														},
+														{
+															"key": "dtArmazenagem",
+															"value": "<string>",
+															"description": "Data de armazenagem, para os serviços que ganham isenção de preço, conforme a data de armazenagem. Formato DD-MM-YYYY"
+														},
+														{
+															"key": "vlRemessa",
+															"value": "<string>",
+															"description": "Valor de remessa de valores monetários."
+														}
+													],
+													"variable": [
+														{
+															"key": "coProduto"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Consulta preço de uma lista de produtos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idLote\": \"1\",\n    \"parametrosPrazo\": [\n        {\n            \"cepDestino\": \"70002900\",\n            \"cepOrigem\": \"05311900\",\n            \"coProduto\": \"04162\",\n            \"nuRequisicao\": \"1\",\n            \"dtEvento\": \"18/03/2022\"\n        },\n        {\n            \"cepDestino\": \"70002900\",\n            \"cepOrigem\": \"05311900\",\n            \"coProduto\": \"04669\",\n            \"nuRequisicao\": \"2\",\n            \"dtEvento\": \"18/03/2022\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/nacional",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"nacional"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idLote\": \"<string>\",\n  \"parametrosProduto\": [\n    {\n      \"coProduto\": \"<string>\",\n      \"nuRequisicao\": \"<string>\",\n      \"nuContrato\": \"<string>\",\n      \"nuDR\": \"<integer>\",\n      \"cepOrigem\": \"<string>\",\n      \"psObjeto\": \"<string>\",\n      \"nuUnidade\": \"<string>\",\n      \"tpObjeto\": \"<string>\",\n      \"comprimento\": \"<string>\",\n      \"largura\": \"<string>\",\n      \"altura\": \"<string>\",\n      \"diametro\": \"<string>\",\n      \"psCubico\": \"<string>\",\n      \"servicosAdicionais\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"criterios\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vlDeclarado\": \"<string>\",\n      \"dtEvento\": \"<string>\",\n      \"coUnidadeOrigem\": \"<string>\",\n      \"dtArmazenagem\": \"<string>\",\n      \"vlRemessa\": \"<string>\",\n      \"cepDestino\": \"<string>\"\n    },\n    {\n      \"coProduto\": \"<string>\",\n      \"nuRequisicao\": \"<string>\",\n      \"nuContrato\": \"<string>\",\n      \"nuDR\": \"<integer>\",\n      \"cepOrigem\": \"<string>\",\n      \"psObjeto\": \"<string>\",\n      \"nuUnidade\": \"<string>\",\n      \"tpObjeto\": \"<string>\",\n      \"comprimento\": \"<string>\",\n      \"largura\": \"<string>\",\n      \"altura\": \"<string>\",\n      \"diametro\": \"<string>\",\n      \"psCubico\": \"<string>\",\n      \"servicosAdicionais\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"criterios\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vlDeclarado\": \"<string>\",\n      \"dtEvento\": \"<string>\",\n      \"coUnidadeOrigem\": \"<string>\",\n      \"dtArmazenagem\": \"<string>\",\n      \"vlRemessa\": \"<string>\",\n      \"cepDestino\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api.correios.com.br/preco/v1/nacional",
+											"protocol": "https",
+											"host": [
+												"api",
+												"correios",
+												"com",
+												"br"
+											],
+											"path": [
+												"preco",
+												"v1",
+												"nacional"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"coProduto\": \"<string>\",\n    \"noProduto\": \"<string>\",\n    \"pcBase\": \"<string>\",\n    \"pcBaseGeral\": \"<string>\",\n    \"peVariacao\": \"<string>\",\n    \"pcReferencia\": \"<string>\",\n    \"beneficios\": [\n      {\n        \"codigo\": \"<string>\",\n        \"tipoBeneficio\": \"DF\",\n        \"tipo\": \"<string>\",\n        \"abrangencia\": \"N\",\n        \"coPacote\": \"<string>\",\n        \"noPacote\": \"<string>\",\n        \"incondicional\": \"<string>\",\n        \"criterio\": [\n          {\n            \"nuCriterio\": \"<string>\",\n            \"noCriterio\": \"<string>\",\n            \"atendido\": \"<string>\",\n            \"peNegociado\": \"<string>\",\n            \"peConcedido\": \"<string>\"\n          },\n          {\n            \"nuCriterio\": \"<string>\",\n            \"noCriterio\": \"<string>\",\n            \"atendido\": \"<string>\",\n            \"peNegociado\": \"<string>\",\n            \"peConcedido\": \"<string>\"\n          }\n        ],\n        \"vlBaseCalculo\": \"<string>\",\n        \"percentual\": \"<string>\",\n        \"valor\": \"<string>\"\n      },\n      {\n        \"codigo\": \"<string>\",\n        \"tipoBeneficio\": \"BC\",\n        \"tipo\": \"<string>\",\n        \"abrangencia\": \"O\",\n        \"coPacote\": \"<string>\",\n        \"noPacote\": \"<string>\",\n        \"incondicional\": \"<string>\",\n        \"criterio\": [\n          {\n            \"nuCriterio\": \"<string>\",\n            \"noCriterio\": \"<string>\",\n            \"atendido\": \"<string>\",\n            \"peNegociado\": \"<string>\",\n            \"peConcedido\": \"<string>\"\n          },\n          {\n            \"nuCriterio\": \"<string>\",\n            \"noCriterio\": \"<string>\",\n            \"atendido\": \"<string>\",\n            \"peNegociado\": \"<string>\",\n            \"peConcedido\": \"<string>\"\n          }\n        ],\n        \"vlBaseCalculo\": \"<string>\",\n        \"percentual\": \"<string>\",\n        \"valor\": \"<string>\"\n      }\n    ],\n    \"vlBaseCalculoImposto\": \"<string>\",\n    \"nuRequisicao\": \"<string>\",\n    \"inPesoCubico\": \"<string>\",\n    \"psCobrado\": \"<string>\",\n    \"servicoAdicional\": [\n      {\n        \"coServAdicional\": \"<string>\",\n        \"tpServAdicional\": \"<string>\",\n        \"pcServicoAdicional\": \"<string>\"\n      },\n      {\n        \"coServAdicional\": \"<string>\",\n        \"tpServAdicional\": \"<string>\",\n        \"pcServicoAdicional\": \"<string>\"\n      }\n    ],\n    \"peAdValorem\": \"<string>\",\n    \"vlSeguroAutomatico\": \"<string>\",\n    \"qtAdicional\": \"<string>\",\n    \"pcFaixa\": \"<string>\",\n    \"pcCadaAdicional\": \"<string>\",\n    \"pcTotalAdicional\": \"<string>\",\n    \"pcFaixaVariacao\": \"<string>\",\n    \"pcCadaAdicionalVariacao\": \"<string>\",\n    \"pcTotalAdicionalVariacao\": \"<string>\",\n    \"vlTotalDescVariacao\": \"<string>\",\n    \"vlTotalBeneficios\": \"<string>\",\n    \"pcProduto\": \"<string>\",\n    \"pcTotalServicosAdicionais\": \"<string>\",\n    \"pcFinal\": \"<string>\",\n    \"txErro\": \"<string>\",\n    \"infoAdicional\": [\n      {\n        \"tipo\": \"FATOR_CADA_ADICIONAL\",\n        \"valor\": \"<string>\"\n      },\n      {\n        \"tipo\": \"LOB_SGPB\",\n        \"valor\": \"<string>\"\n      }\n    ],\n    \"nomeProduto\": \"<string>\",\n    \"peIsencaoArmazenagem\": \"<string>\",\n    \"taxaExtra\": [\n      {\n        \"codigo\": \"<string>\",\n        \"tipo\": \"<string>\",\n        \"vlTaxa\": \"<string>\"\n      },\n      {\n        \"codigo\": \"<string>\",\n        \"tipo\": \"<string>\",\n        \"vlTaxa\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"coProduto\": \"<string>\",\n    \"noProduto\": \"<string>\",\n    \"pcBase\": \"<string>\",\n    \"pcBaseGeral\": \"<string>\",\n    \"peVariacao\": \"<string>\",\n    \"pcReferencia\": \"<string>\",\n    \"beneficios\": [\n      {\n        \"codigo\": \"<string>\",\n        \"tipoBeneficio\": \"BC\",\n        \"tipo\": \"<string>\",\n        \"abrangencia\": \"N\",\n        \"coPacote\": \"<string>\",\n        \"noPacote\": \"<string>\",\n        \"incondicional\": \"<string>\",\n        \"criterio\": [\n          {\n            \"nuCriterio\": \"<string>\",\n            \"noCriterio\": \"<string>\",\n            \"atendido\": \"<string>\",\n            \"peNegociado\": \"<string>\",\n            \"peConcedido\": \"<string>\"\n          },\n          {\n            \"nuCriterio\": \"<string>\",\n            \"noCriterio\": \"<string>\",\n            \"atendido\": \"<string>\",\n            \"peNegociado\": \"<string>\",\n            \"peConcedido\": \"<string>\"\n          }\n        ],\n        \"vlBaseCalculo\": \"<string>\",\n        \"percentual\": \"<string>\",\n        \"valor\": \"<string>\"\n      },\n      {\n        \"codigo\": \"<string>\",\n        \"tipoBeneficio\": \"BP\",\n        \"tipo\": \"<string>\",\n        \"abrangencia\": \"O\",\n        \"coPacote\": \"<string>\",\n        \"noPacote\": \"<string>\",\n        \"incondicional\": \"<string>\",\n        \"criterio\": [\n          {\n            \"nuCriterio\": \"<string>\",\n            \"noCriterio\": \"<string>\",\n            \"atendido\": \"<string>\",\n            \"peNegociado\": \"<string>\",\n            \"peConcedido\": \"<string>\"\n          },\n          {\n            \"nuCriterio\": \"<string>\",\n            \"noCriterio\": \"<string>\",\n            \"atendido\": \"<string>\",\n            \"peNegociado\": \"<string>\",\n            \"peConcedido\": \"<string>\"\n          }\n        ],\n        \"vlBaseCalculo\": \"<string>\",\n        \"percentual\": \"<string>\",\n        \"valor\": \"<string>\"\n      }\n    ],\n    \"vlBaseCalculoImposto\": \"<string>\",\n    \"nuRequisicao\": \"<string>\",\n    \"inPesoCubico\": \"<string>\",\n    \"psCobrado\": \"<string>\",\n    \"servicoAdicional\": [\n      {\n        \"coServAdicional\": \"<string>\",\n        \"tpServAdicional\": \"<string>\",\n        \"pcServicoAdicional\": \"<string>\"\n      },\n      {\n        \"coServAdicional\": \"<string>\",\n        \"tpServAdicional\": \"<string>\",\n        \"pcServicoAdicional\": \"<string>\"\n      }\n    ],\n    \"peAdValorem\": \"<string>\",\n    \"vlSeguroAutomatico\": \"<string>\",\n    \"qtAdicional\": \"<string>\",\n    \"pcFaixa\": \"<string>\",\n    \"pcCadaAdicional\": \"<string>\",\n    \"pcTotalAdicional\": \"<string>\",\n    \"pcFaixaVariacao\": \"<string>\",\n    \"pcCadaAdicionalVariacao\": \"<string>\",\n    \"pcTotalAdicionalVariacao\": \"<string>\",\n    \"vlTotalDescVariacao\": \"<string>\",\n    \"vlTotalBeneficios\": \"<string>\",\n    \"pcProduto\": \"<string>\",\n    \"pcTotalServicosAdicionais\": \"<string>\",\n    \"pcFinal\": \"<string>\",\n    \"txErro\": \"<string>\",\n    \"infoAdicional\": [\n      {\n        \"tipo\": \"QT_EXCESSO\",\n        \"valor\": \"<string>\"\n      },\n      {\n        \"tipo\": \"NU_COMBO\",\n        \"valor\": \"<string>\"\n      }\n    ],\n    \"nomeProduto\": \"<string>\",\n    \"peIsencaoArmazenagem\": \"<string>\",\n    \"taxaExtra\": [\n      {\n        \"codigo\": \"<string>\",\n        \"tipo\": \"<string>\",\n        \"vlTaxa\": \"<string>\"\n      },\n      {\n        \"codigo\": \"<string>\",\n        \"tipo\": \"<string>\",\n        \"vlTaxa\": \"<string>\"\n      }\n    ]\n  }\n]"
+								},
+								{
+									"name": "Caso ocorra alguma validação necessária por parte do requisitante.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idLote\": \"<string>\",\n  \"parametrosProduto\": [\n    {\n      \"coProduto\": \"<string>\",\n      \"nuRequisicao\": \"<string>\",\n      \"nuContrato\": \"<string>\",\n      \"nuDR\": \"<integer>\",\n      \"cepOrigem\": \"<string>\",\n      \"psObjeto\": \"<string>\",\n      \"nuUnidade\": \"<string>\",\n      \"tpObjeto\": \"<string>\",\n      \"comprimento\": \"<string>\",\n      \"largura\": \"<string>\",\n      \"altura\": \"<string>\",\n      \"diametro\": \"<string>\",\n      \"psCubico\": \"<string>\",\n      \"servicosAdicionais\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"criterios\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vlDeclarado\": \"<string>\",\n      \"dtEvento\": \"<string>\",\n      \"coUnidadeOrigem\": \"<string>\",\n      \"dtArmazenagem\": \"<string>\",\n      \"vlRemessa\": \"<string>\",\n      \"cepDestino\": \"<string>\"\n    },\n    {\n      \"coProduto\": \"<string>\",\n      \"nuRequisicao\": \"<string>\",\n      \"nuContrato\": \"<string>\",\n      \"nuDR\": \"<integer>\",\n      \"cepOrigem\": \"<string>\",\n      \"psObjeto\": \"<string>\",\n      \"nuUnidade\": \"<string>\",\n      \"tpObjeto\": \"<string>\",\n      \"comprimento\": \"<string>\",\n      \"largura\": \"<string>\",\n      \"altura\": \"<string>\",\n      \"diametro\": \"<string>\",\n      \"psCubico\": \"<string>\",\n      \"servicosAdicionais\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"criterios\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vlDeclarado\": \"<string>\",\n      \"dtEvento\": \"<string>\",\n      \"coUnidadeOrigem\": \"<string>\",\n      \"dtArmazenagem\": \"<string>\",\n      \"vlRemessa\": \"<string>\",\n      \"cepDestino\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/nacional",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"nacional"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+								},
+								{
+									"name": "Caso ocorra algum erro no servidor.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idLote\": \"<string>\",\n  \"parametrosProduto\": [\n    {\n      \"coProduto\": \"<string>\",\n      \"nuRequisicao\": \"<string>\",\n      \"nuContrato\": \"<string>\",\n      \"nuDR\": \"<integer>\",\n      \"cepOrigem\": \"<string>\",\n      \"psObjeto\": \"<string>\",\n      \"nuUnidade\": \"<string>\",\n      \"tpObjeto\": \"<string>\",\n      \"comprimento\": \"<string>\",\n      \"largura\": \"<string>\",\n      \"altura\": \"<string>\",\n      \"diametro\": \"<string>\",\n      \"psCubico\": \"<string>\",\n      \"servicosAdicionais\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"criterios\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vlDeclarado\": \"<string>\",\n      \"dtEvento\": \"<string>\",\n      \"coUnidadeOrigem\": \"<string>\",\n      \"dtArmazenagem\": \"<string>\",\n      \"vlRemessa\": \"<string>\",\n      \"cepDestino\": \"<string>\"\n    },\n    {\n      \"coProduto\": \"<string>\",\n      \"nuRequisicao\": \"<string>\",\n      \"nuContrato\": \"<string>\",\n      \"nuDR\": \"<integer>\",\n      \"cepOrigem\": \"<string>\",\n      \"psObjeto\": \"<string>\",\n      \"nuUnidade\": \"<string>\",\n      \"tpObjeto\": \"<string>\",\n      \"comprimento\": \"<string>\",\n      \"largura\": \"<string>\",\n      \"altura\": \"<string>\",\n      \"diametro\": \"<string>\",\n      \"psCubico\": \"<string>\",\n      \"servicosAdicionais\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"criterios\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vlDeclarado\": \"<string>\",\n      \"dtEvento\": \"<string>\",\n      \"coUnidadeOrigem\": \"<string>\",\n      \"dtArmazenagem\": \"<string>\",\n      \"vlRemessa\": \"<string>\",\n      \"cepDestino\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/nacional",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"nacional"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "internacional",
+					"item": [
+						{
+							"name": "{coProduto}",
+							"item": [
+								{
+									"name": "Consulta preço de um produto/serviço.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/internacional/:coProduto?sgPaisDestino=<string>&nuRequisicao=<string>&nuContrato=<string>&nuDR=<string>&cepOrigem=<string>&psObjeto=<string>&nuUnidade=<string>&tpObjeto=<string>&comprimento=<string>&largura=<string>&altura=<string>&diametro=<string>&psCubico=<string>&servicosAdicionais=<string>&criterios=<string>&vlDeclarado=<string>&dtEvento=<string>&coUnidadeOrigem=<string>&dtArmazenagem=<string>&vlRemessa=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"internacional",
+												":coProduto"
+											],
+											"query": [
+												{
+													"key": "sgPaisDestino",
+													"value": "<string>",
+													"description": "(Required) Sigla do país de destino."
+												},
+												{
+													"key": "nuRequisicao",
+													"value": "<string>",
+													"description": "Número da requisição. Número informado e controlado pelo requisitante do serviço."
+												},
+												{
+													"key": "nuContrato",
+													"value": "<string>",
+													"description": "Número do contrato."
+												},
+												{
+													"key": "nuDR",
+													"value": "<string>",
+													"description": "Número da DR do contrato."
+												},
+												{
+													"key": "cepOrigem",
+													"value": "<string>",
+													"description": "CEP de origem da postagem."
+												},
+												{
+													"key": "psObjeto",
+													"value": "<string>",
+													"description": "Peso do objeto em gramas."
+												},
+												{
+													"key": "nuUnidade",
+													"value": "<string>",
+													"description": "Número de unidades prestadas no atendimento. Número de páginas, palavras, minutos."
+												},
+												{
+													"key": "tpObjeto",
+													"value": "<string>",
+													"description": "Tipo do objeto da postagem: 1 - Envelope, 2 - Pacote; 3 - Rolo."
+												},
+												{
+													"key": "comprimento",
+													"value": "<string>",
+													"description": "Comprimento do objeto, em centímetros."
+												},
+												{
+													"key": "largura",
+													"value": "<string>",
+													"description": "Largura do objeto, em centímetros."
+												},
+												{
+													"key": "altura",
+													"value": "<string>",
+													"description": "Altura do objeto, em centímetros."
+												},
+												{
+													"key": "diametro",
+													"value": "<string>",
+													"description": "Diâmetro do objeto, em centímetros."
+												},
+												{
+													"key": "psCubico",
+													"value": "<string>",
+													"description": "Peso cúbico do objeto em gramas."
+												},
+												{
+													"key": "servicosAdicionais",
+													"value": "<string>",
+													"description": "Lista de serviços adicionais"
+												},
+												{
+													"key": "criterios",
+													"value": "<string>",
+													"description": "Lista dos criterios de desconto funcional"
+												},
+												{
+													"key": "vlDeclarado",
+													"value": "<string>",
+													"description": "Valor declarado associado ao serviço."
+												},
+												{
+													"key": "dtEvento",
+													"value": "<string>",
+													"description": "Data que será usado para o cálculo do preço. DD-MM-YYYY"
+												},
+												{
+													"key": "coUnidadeOrigem",
+													"value": "<string>",
+													"description": "Código MCMCU da unidade de origem para precificar conforme canal de postagem"
+												},
+												{
+													"key": "dtArmazenagem",
+													"value": "<string>",
+													"description": "Data de armazenagem, para os serviços que ganham isenção de preço, conforme a data de armazenagem. Formato DD-MM-YYYY"
+												},
+												{
+													"key": "vlRemessa",
+													"value": "<string>",
+													"description": "Valor de remessa de valores monetários."
+												}
+											],
+											"variable": [
+												{
+													"key": "coProduto",
+													"value": "<string>",
+													"description": "(Required) Código do produto ou serviço"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "https://api.correios.com.br/preco/v1/internacional/:coProduto?sgPaisDestino=<string>&nuRequisicao=<string>&nuContrato=<string>&nuDR=<string>&cepOrigem=<string>&psObjeto=<string>&nuUnidade=<string>&tpObjeto=<string>&comprimento=<string>&largura=<string>&altura=<string>&diametro=<string>&psCubico=<string>&servicosAdicionais=<string>&criterios=<string>&vlDeclarado=<string>&dtEvento=<string>&coUnidadeOrigem=<string>&dtArmazenagem=<string>&vlRemessa=<string>",
+													"protocol": "https",
+													"host": [
+														"api",
+														"correios",
+														"com",
+														"br"
+													],
+													"path": [
+														"preco",
+														"v1",
+														"internacional",
+														":coProduto"
+													],
+													"query": [
+														{
+															"key": "sgPaisDestino",
+															"value": "<string>",
+															"description": "(Required) Sigla do país de destino."
+														},
+														{
+															"key": "nuRequisicao",
+															"value": "<string>",
+															"description": "Número da requisição. Número informado e controlado pelo requisitante do serviço."
+														},
+														{
+															"key": "nuContrato",
+															"value": "<string>",
+															"description": "Número do contrato."
+														},
+														{
+															"key": "nuDR",
+															"value": "<string>",
+															"description": "Número da DR do contrato."
+														},
+														{
+															"key": "cepOrigem",
+															"value": "<string>",
+															"description": "CEP de origem da postagem."
+														},
+														{
+															"key": "psObjeto",
+															"value": "<string>",
+															"description": "Peso do objeto em gramas."
+														},
+														{
+															"key": "nuUnidade",
+															"value": "<string>",
+															"description": "Número de unidades prestadas no atendimento. Número de páginas, palavras, minutos."
+														},
+														{
+															"key": "tpObjeto",
+															"value": "<string>",
+															"description": "Tipo do objeto da postagem: 1 - Envelope, 2 - Pacote; 3 - Rolo."
+														},
+														{
+															"key": "comprimento",
+															"value": "<string>",
+															"description": "Comprimento do objeto, em centímetros."
+														},
+														{
+															"key": "largura",
+															"value": "<string>",
+															"description": "Largura do objeto, em centímetros."
+														},
+														{
+															"key": "altura",
+															"value": "<string>",
+															"description": "Altura do objeto, em centímetros."
+														},
+														{
+															"key": "diametro",
+															"value": "<string>",
+															"description": "Diâmetro do objeto, em centímetros."
+														},
+														{
+															"key": "psCubico",
+															"value": "<string>",
+															"description": "Peso cúbico do objeto em gramas."
+														},
+														{
+															"key": "servicosAdicionais",
+															"value": "<string>",
+															"description": "Lista de serviços adicionais"
+														},
+														{
+															"key": "criterios",
+															"value": "<string>",
+															"description": "Lista dos criterios de desconto funcional"
+														},
+														{
+															"key": "vlDeclarado",
+															"value": "<string>",
+															"description": "Valor declarado associado ao serviço."
+														},
+														{
+															"key": "dtEvento",
+															"value": "<string>",
+															"description": "Data que será usado para o cálculo do preço. DD-MM-YYYY"
+														},
+														{
+															"key": "coUnidadeOrigem",
+															"value": "<string>",
+															"description": "Código MCMCU da unidade de origem para precificar conforme canal de postagem"
+														},
+														{
+															"key": "dtArmazenagem",
+															"value": "<string>",
+															"description": "Data de armazenagem, para os serviços que ganham isenção de preço, conforme a data de armazenagem. Formato DD-MM-YYYY"
+														},
+														{
+															"key": "vlRemessa",
+															"value": "<string>",
+															"description": "Valor de remessa de valores monetários."
+														}
+													],
+													"variable": [
+														{
+															"key": "coProduto"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"coProduto\": \"<string>\",\n  \"noProduto\": \"<string>\",\n  \"pcBase\": \"<string>\",\n  \"pcBaseGeral\": \"<string>\",\n  \"peVariacao\": \"<string>\",\n  \"pcReferencia\": \"<string>\",\n  \"beneficios\": [\n    {\n      \"codigo\": \"<string>\",\n      \"tipoBeneficio\": \"BC\",\n      \"tipo\": \"<string>\",\n      \"abrangencia\": \"O\",\n      \"coPacote\": \"<string>\",\n      \"noPacote\": \"<string>\",\n      \"incondicional\": \"<string>\",\n      \"criterio\": [\n        {\n          \"nuCriterio\": \"<string>\",\n          \"noCriterio\": \"<string>\",\n          \"atendido\": \"<string>\",\n          \"peNegociado\": \"<string>\",\n          \"peConcedido\": \"<string>\"\n        },\n        {\n          \"nuCriterio\": \"<string>\",\n          \"noCriterio\": \"<string>\",\n          \"atendido\": \"<string>\",\n          \"peNegociado\": \"<string>\",\n          \"peConcedido\": \"<string>\"\n        }\n      ],\n      \"vlBaseCalculo\": \"<string>\",\n      \"percentual\": \"<string>\",\n      \"valor\": \"<string>\"\n    },\n    {\n      \"codigo\": \"<string>\",\n      \"tipoBeneficio\": \"DF\",\n      \"tipo\": \"<string>\",\n      \"abrangencia\": \"O\",\n      \"coPacote\": \"<string>\",\n      \"noPacote\": \"<string>\",\n      \"incondicional\": \"<string>\",\n      \"criterio\": [\n        {\n          \"nuCriterio\": \"<string>\",\n          \"noCriterio\": \"<string>\",\n          \"atendido\": \"<string>\",\n          \"peNegociado\": \"<string>\",\n          \"peConcedido\": \"<string>\"\n        },\n        {\n          \"nuCriterio\": \"<string>\",\n          \"noCriterio\": \"<string>\",\n          \"atendido\": \"<string>\",\n          \"peNegociado\": \"<string>\",\n          \"peConcedido\": \"<string>\"\n        }\n      ],\n      \"vlBaseCalculo\": \"<string>\",\n      \"percentual\": \"<string>\",\n      \"valor\": \"<string>\"\n    }\n  ],\n  \"vlBaseCalculoImposto\": \"<string>\",\n  \"nuRequisicao\": \"<string>\",\n  \"inPesoCubico\": \"<string>\",\n  \"psCobrado\": \"<string>\",\n  \"servicoAdicional\": [\n    {\n      \"coServAdicional\": \"<string>\",\n      \"tpServAdicional\": \"<string>\",\n      \"pcServicoAdicional\": \"<string>\"\n    },\n    {\n      \"coServAdicional\": \"<string>\",\n      \"tpServAdicional\": \"<string>\",\n      \"pcServicoAdicional\": \"<string>\"\n    }\n  ],\n  \"peAdValorem\": \"<string>\",\n  \"vlSeguroAutomatico\": \"<string>\",\n  \"qtAdicional\": \"<string>\",\n  \"pcFaixa\": \"<string>\",\n  \"pcCadaAdicional\": \"<string>\",\n  \"pcTotalAdicional\": \"<string>\",\n  \"pcFaixaVariacao\": \"<string>\",\n  \"pcCadaAdicionalVariacao\": \"<string>\",\n  \"pcTotalAdicionalVariacao\": \"<string>\",\n  \"vlTotalDescVariacao\": \"<string>\",\n  \"vlTotalBeneficios\": \"<string>\",\n  \"pcProduto\": \"<string>\",\n  \"pcTotalServicosAdicionais\": \"<string>\",\n  \"pcFinal\": \"<string>\",\n  \"txErro\": \"<string>\",\n  \"infoAdicional\": [\n    {\n      \"tipo\": \"LIMITE_MAX_TARIFACAO_ERP\",\n      \"valor\": \"<string>\"\n    },\n    {\n      \"tipo\": \"CO_AGRUPADOR\",\n      \"valor\": \"<string>\"\n    }\n  ],\n  \"nomeProduto\": \"<string>\",\n  \"peIsencaoArmazenagem\": \"<string>\",\n  \"taxaExtra\": [\n    {\n      \"codigo\": \"<string>\",\n      \"tipo\": \"<string>\",\n      \"vlTaxa\": \"<string>\"\n    },\n    {\n      \"codigo\": \"<string>\",\n      \"tipo\": \"<string>\",\n      \"vlTaxa\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Caso ocorra alguma validação necessária por parte do requisitante.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/internacional/:coProduto?sgPaisDestino=<string>&nuRequisicao=<string>&nuContrato=<string>&nuDR=<string>&cepOrigem=<string>&psObjeto=<string>&nuUnidade=<string>&tpObjeto=<string>&comprimento=<string>&largura=<string>&altura=<string>&diametro=<string>&psCubico=<string>&servicosAdicionais=<string>&criterios=<string>&vlDeclarado=<string>&dtEvento=<string>&coUnidadeOrigem=<string>&dtArmazenagem=<string>&vlRemessa=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"internacional",
+														":coProduto"
+													],
+													"query": [
+														{
+															"key": "sgPaisDestino",
+															"value": "<string>",
+															"description": "(Required) Sigla do país de destino."
+														},
+														{
+															"key": "nuRequisicao",
+															"value": "<string>",
+															"description": "Número da requisição. Número informado e controlado pelo requisitante do serviço."
+														},
+														{
+															"key": "nuContrato",
+															"value": "<string>",
+															"description": "Número do contrato."
+														},
+														{
+															"key": "nuDR",
+															"value": "<string>",
+															"description": "Número da DR do contrato."
+														},
+														{
+															"key": "cepOrigem",
+															"value": "<string>",
+															"description": "CEP de origem da postagem."
+														},
+														{
+															"key": "psObjeto",
+															"value": "<string>",
+															"description": "Peso do objeto em gramas."
+														},
+														{
+															"key": "nuUnidade",
+															"value": "<string>",
+															"description": "Número de unidades prestadas no atendimento. Número de páginas, palavras, minutos."
+														},
+														{
+															"key": "tpObjeto",
+															"value": "<string>",
+															"description": "Tipo do objeto da postagem: 1 - Envelope, 2 - Pacote; 3 - Rolo."
+														},
+														{
+															"key": "comprimento",
+															"value": "<string>",
+															"description": "Comprimento do objeto, em centímetros."
+														},
+														{
+															"key": "largura",
+															"value": "<string>",
+															"description": "Largura do objeto, em centímetros."
+														},
+														{
+															"key": "altura",
+															"value": "<string>",
+															"description": "Altura do objeto, em centímetros."
+														},
+														{
+															"key": "diametro",
+															"value": "<string>",
+															"description": "Diâmetro do objeto, em centímetros."
+														},
+														{
+															"key": "psCubico",
+															"value": "<string>",
+															"description": "Peso cúbico do objeto em gramas."
+														},
+														{
+															"key": "servicosAdicionais",
+															"value": "<string>",
+															"description": "Lista de serviços adicionais"
+														},
+														{
+															"key": "criterios",
+															"value": "<string>",
+															"description": "Lista dos criterios de desconto funcional"
+														},
+														{
+															"key": "vlDeclarado",
+															"value": "<string>",
+															"description": "Valor declarado associado ao serviço."
+														},
+														{
+															"key": "dtEvento",
+															"value": "<string>",
+															"description": "Data que será usado para o cálculo do preço. DD-MM-YYYY"
+														},
+														{
+															"key": "coUnidadeOrigem",
+															"value": "<string>",
+															"description": "Código MCMCU da unidade de origem para precificar conforme canal de postagem"
+														},
+														{
+															"key": "dtArmazenagem",
+															"value": "<string>",
+															"description": "Data de armazenagem, para os serviços que ganham isenção de preço, conforme a data de armazenagem. Formato DD-MM-YYYY"
+														},
+														{
+															"key": "vlRemessa",
+															"value": "<string>",
+															"description": "Valor de remessa de valores monetários."
+														}
+													],
+													"variable": [
+														{
+															"key": "coProduto"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+										},
+										{
+											"name": "Caso ocorra algum erro no servidor.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/internacional/:coProduto?sgPaisDestino=<string>&nuRequisicao=<string>&nuContrato=<string>&nuDR=<string>&cepOrigem=<string>&psObjeto=<string>&nuUnidade=<string>&tpObjeto=<string>&comprimento=<string>&largura=<string>&altura=<string>&diametro=<string>&psCubico=<string>&servicosAdicionais=<string>&criterios=<string>&vlDeclarado=<string>&dtEvento=<string>&coUnidadeOrigem=<string>&dtArmazenagem=<string>&vlRemessa=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"internacional",
+														":coProduto"
+													],
+													"query": [
+														{
+															"key": "sgPaisDestino",
+															"value": "<string>",
+															"description": "(Required) Sigla do país de destino."
+														},
+														{
+															"key": "nuRequisicao",
+															"value": "<string>",
+															"description": "Número da requisição. Número informado e controlado pelo requisitante do serviço."
+														},
+														{
+															"key": "nuContrato",
+															"value": "<string>",
+															"description": "Número do contrato."
+														},
+														{
+															"key": "nuDR",
+															"value": "<string>",
+															"description": "Número da DR do contrato."
+														},
+														{
+															"key": "cepOrigem",
+															"value": "<string>",
+															"description": "CEP de origem da postagem."
+														},
+														{
+															"key": "psObjeto",
+															"value": "<string>",
+															"description": "Peso do objeto em gramas."
+														},
+														{
+															"key": "nuUnidade",
+															"value": "<string>",
+															"description": "Número de unidades prestadas no atendimento. Número de páginas, palavras, minutos."
+														},
+														{
+															"key": "tpObjeto",
+															"value": "<string>",
+															"description": "Tipo do objeto da postagem: 1 - Envelope, 2 - Pacote; 3 - Rolo."
+														},
+														{
+															"key": "comprimento",
+															"value": "<string>",
+															"description": "Comprimento do objeto, em centímetros."
+														},
+														{
+															"key": "largura",
+															"value": "<string>",
+															"description": "Largura do objeto, em centímetros."
+														},
+														{
+															"key": "altura",
+															"value": "<string>",
+															"description": "Altura do objeto, em centímetros."
+														},
+														{
+															"key": "diametro",
+															"value": "<string>",
+															"description": "Diâmetro do objeto, em centímetros."
+														},
+														{
+															"key": "psCubico",
+															"value": "<string>",
+															"description": "Peso cúbico do objeto em gramas."
+														},
+														{
+															"key": "servicosAdicionais",
+															"value": "<string>",
+															"description": "Lista de serviços adicionais"
+														},
+														{
+															"key": "criterios",
+															"value": "<string>",
+															"description": "Lista dos criterios de desconto funcional"
+														},
+														{
+															"key": "vlDeclarado",
+															"value": "<string>",
+															"description": "Valor declarado associado ao serviço."
+														},
+														{
+															"key": "dtEvento",
+															"value": "<string>",
+															"description": "Data que será usado para o cálculo do preço. DD-MM-YYYY"
+														},
+														{
+															"key": "coUnidadeOrigem",
+															"value": "<string>",
+															"description": "Código MCMCU da unidade de origem para precificar conforme canal de postagem"
+														},
+														{
+															"key": "dtArmazenagem",
+			
