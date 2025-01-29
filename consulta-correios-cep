@@ -1,0 +1,2559 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CEP v3",
+    "description": "API de busca CEP.\u003Cbr /\u003E\u003Cb\u003ETipo da disponibilização: \u003C/b\u003E ambas\u003Cbr /\u003E\u003Cbr/\u003E\u003Cb\u003EClassificação de acesso interno:\u003C/b\u003E público\u003Cbr /\u003E\u003Cb\u003EClassificação de acesso externo:\u003C/b\u003E restrito\u003Cbr /\u003E\u003Cb\u003ETipo de autorização externa:\u003C/b\u003E contrato\u003Cbr /\u003E\u003Cb\u003EExige serviço:\u003C/b\u003E sim\u003Cbr /\u003E\u003C/div\u003E",
+    "version": "3.12.7",
+    "x-nuApi": 41,
+    "x-serviceId": "cep",
+    "x-ambiente": "PRODUCAO"
+  },
+  "servers": [
+    {
+      "url": "https://api.correios.com.br/cep",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Endereço",
+      "description": "Endereço, logradouro e CEP"
+    },
+    {
+      "name": "Localidades",
+      "description": "Localidades com bairros e suas faixas de CEP"
+    },
+    {
+      "name": "Bairros",
+      "description": "Bairros de uma localidade"
+    },
+    {
+      "name": "UF",
+      "description": "UF e suas faixas de CEP"
+    }
+  ],
+  "paths": {
+    "/v2/enderecos": {
+      "get": {
+        "tags": [
+          "Endereço"
+        ],
+        "summary": "Lista endereços",
+        "operationId": "listaEndereco",
+        "parameters": [
+          {
+            "name": "cep",
+            "in": "query",
+            "description": "CEP",
+            "required": false,
+            "schema": {
+              "maxItems": 20,
+              "minItems": 0,
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "uf",
+            "in": "query",
+            "description": "Sigla da UF",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            },
+            "example": "GO"
+          },
+          {
+            "name": "localidade",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bairro",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "siglaUnidade",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tipoCEP",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "logradouro",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tipoLogradouro",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "clique",
+            "in": "query",
+            "description": "Indica que é um endereço com clique e retire",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "caixaPostal",
+            "in": "query",
+            "description": "Indica que é um endereço com caixa postal",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locker",
+            "in": "query",
+            "description": "Indica que é um endereço com locker",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agenciaModular",
+            "in": "query",
+            "description": "Indica que é um endereço com agência modular",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepInicial",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepFinal",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "numeroBairro",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "numeroCaixaPostal",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Número de registros por página. Máximo de 2000 itens por página",
+            "required": false,
+            "schema": {
+              "maximum": 2000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 50
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Atributos para ordenação. Exemplo: sort=nome,asc",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEnderecoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/enderecos/{cep}": {
+      "get": {
+        "tags": [
+          "Endereço"
+        ],
+        "summary": "Consulta um endereço",
+        "operationId": "consultaEndereco",
+        "parameters": [
+          {
+            "name": "cep",
+            "in": "path",
+            "description": "Número dos CEPs",
+            "required": true,
+            "schema": {
+              "pattern": "[0-9]{8}",
+              "type": "string"
+            },
+            "example": 24210230
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EnderecoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/ufs": {
+      "get": {
+        "tags": [
+          "UF"
+        ],
+        "summary": "Lista todas as UFs e suas faixas de CEP",
+        "operationId": "listaUfs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UfResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/ufs/{uf}": {
+      "get": {
+        "tags": [
+          "UF"
+        ],
+        "summary": "Consulta uma UF e suas faixas de CEP",
+        "operationId": "consultaUf",
+        "parameters": [
+          {
+            "name": "uf",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UfResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/localidades": {
+      "get": {
+        "tags": [
+          "Localidades"
+        ],
+        "summary": "Lista todas as localidades ",
+        "operationId": "listaLocalidades",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "query",
+            "description": "Número da localidade",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "uf",
+            "in": "query",
+            "description": "Sigla da UF",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            },
+            "example": "GO"
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "description": "Tipo de localidade. M: Município; D: Distrito; P - Povoado",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M",
+                "D",
+                "P"
+              ]
+            },
+            "example": "M"
+          },
+          {
+            "name": "codificada",
+            "in": "query",
+            "description": "Localidade codificada. T: Todas; S: Códificada por logradouro; N: Não codificada; E - Em fase de codificação; I - Inserida na codificação da localidade superior",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "T",
+                "S",
+                "N",
+                "E",
+                "I"
+              ]
+            }
+          },
+          {
+            "name": "localidade",
+            "in": "query",
+            "description": "Nome da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepNaFaixa",
+            "in": "query",
+            "description": "CEP. Verifica se o CEP está dentro da faixa da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Número de registros por página. Máximo de 2000 itens por página",
+            "required": false,
+            "schema": {
+              "maximum": 2000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 50
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Atributos para ordenação. Exemplo: sort=nome,asc",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelLocalidadeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/localidades/{uf}": {
+      "get": {
+        "tags": [
+          "Localidades"
+        ],
+        "summary": "Lista todas as localidades de uma UF",
+        "operationId": "listaPorUf",
+        "parameters": [
+          {
+            "name": "uf",
+            "in": "path",
+            "description": "Sigla da UF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            },
+            "example": "GO"
+          },
+          {
+            "name": "numero",
+            "in": "query",
+            "description": "Número da localidade",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "description": "Tipo de localidade. M: Município; D: Distrito; P - Povoado",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M",
+                "D",
+                "P"
+              ]
+            },
+            "example": "M"
+          },
+          {
+            "name": "codificada",
+            "in": "query",
+            "description": "Localidade codificada. T: Todas; S: Códificada por logradouro; N: Não codificada; E - Em fase de codificação; I - Inserida na codificação da localidade superior",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "T",
+                "S",
+                "N",
+                "E",
+                "I"
+              ]
+            }
+          },
+          {
+            "name": "localidade",
+            "in": "query",
+            "description": "Nome da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepNaFaixa",
+            "in": "query",
+            "description": "CEP. Verifica se o CEP está dentro da faixa da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Número de registros por página. Máximo de 2000 itens por página",
+            "required": false,
+            "schema": {
+              "maximum": 2000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 50
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Atributos para ordenação. Exemplo: sort=nome,asc",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelLocalidadeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/localidades/{uf}/bairros": {
+      "get": {
+        "tags": [
+          "Localidades"
+        ],
+        "summary": "Deprected. Use /v1/localidades/{uf}",
+        "operationId": "listaPorUfBairro",
+        "parameters": [
+          {
+            "name": "uf",
+            "in": "path",
+            "description": "Sigla da UF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            },
+            "example": "GO"
+          },
+          {
+            "name": "numero",
+            "in": "query",
+            "description": "Número da localidade",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "description": "Tipo de localidade. M: Município; D: Distrito; P - Povoado",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M",
+                "D",
+                "P"
+              ]
+            },
+            "example": "M"
+          },
+          {
+            "name": "codificada",
+            "in": "query",
+            "description": "Localidade codificada. T: Todas; S: Códificada por logradouro; N: Não codificada; E - Em fase de codificação; I - Inserida na codificação da localidade superior",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "T",
+                "S",
+                "N",
+                "E",
+                "I"
+              ]
+            }
+          },
+          {
+            "name": "localidade",
+            "in": "query",
+            "description": "Nome da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepNaFaixa",
+            "in": "query",
+            "description": "CEP. Verifica se o CEP está dentro da faixa da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Número de registros por página. Máximo de 2000 itens por página",
+            "required": false,
+            "schema": {
+              "maximum": 2000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 50
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Atributos para ordenação. Exemplo: sort=nome,asc",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelLocalidadeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/localidades/lockers": {
+      "get": {
+        "tags": [
+          "Lockers"
+        ],
+        "summary": "Lista todas as localidades com lockers",
+        "operationId": "listaLockers",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "query",
+            "description": "Número da localidade",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "uf",
+            "in": "query",
+            "description": "Sigla da UF",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            },
+            "example": "GO"
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "description": "Tipo de localidade. M: Município; D: Distrito; P - Povoado",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M",
+                "D",
+                "P"
+              ]
+            },
+            "example": "M"
+          },
+          {
+            "name": "codificada",
+            "in": "query",
+            "description": "Localidade codificada. T: Todas; S: Códificada por logradouro; N: Não codificada; E - Em fase de codificação; I - Inserida na codificação da localidade superior",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "T",
+                "S",
+                "N",
+                "E",
+                "I"
+              ]
+            }
+          },
+          {
+            "name": "localidade",
+            "in": "query",
+            "description": "Nome da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepNaFaixa",
+            "in": "query",
+            "description": "CEP. Verifica se o CEP está dentro da faixa da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Número de registros por página. Máximo de 2000 itens por página",
+            "required": false,
+            "schema": {
+              "maximum": 2000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 50
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Atributos para ordenação. Exemplo: sort=nome,asc",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelLocalidadeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/localidades/cliques": {
+      "get": {
+        "tags": [
+          "Clique e Retire"
+        ],
+        "summary": "Lista todas as localidades com clique e retire",
+        "operationId": "listaCliques",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "query",
+            "description": "Número da localidade",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "uf",
+            "in": "query",
+            "description": "Sigla da UF",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            },
+            "example": "GO"
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "description": "Tipo de localidade. M: Município; D: Distrito; P - Povoado",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M",
+                "D",
+                "P"
+              ]
+            },
+            "example": "M"
+          },
+          {
+            "name": "codificada",
+            "in": "query",
+            "description": "Localidade codificada. T: Todas; S: Códificada por logradouro; N: Não codificada; E - Em fase de codificação; I - Inserida na codificação da localidade superior",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "T",
+                "S",
+                "N",
+                "E",
+                "I"
+              ]
+            }
+          },
+          {
+            "name": "localidade",
+            "in": "query",
+            "description": "Nome da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepNaFaixa",
+            "in": "query",
+            "description": "CEP. Verifica se o CEP está dentro da faixa da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Número de registros por página. Máximo de 2000 itens por página",
+            "required": false,
+            "schema": {
+              "maximum": 2000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 50
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Atributos para ordenação. Exemplo: sort=nome,asc",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelLocalidadeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/localidades/caixas-postais": {
+      "get": {
+        "tags": [
+          "Caixas Postais"
+        ],
+        "summary": "Lista todas as localidades com caixas postais",
+        "operationId": "listaCaixasPostais",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "query",
+            "description": "Número da localidade",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "uf",
+            "in": "query",
+            "description": "Sigla da UF",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            },
+            "example": "GO"
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "description": "Tipo de localidade. M: Município; D: Distrito; P - Povoado",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M",
+                "D",
+                "P"
+              ]
+            },
+            "example": "M"
+          },
+          {
+            "name": "codificada",
+            "in": "query",
+            "description": "Localidade codificada. T: Todas; S: Códificada por logradouro; N: Não codificada; E - Em fase de codificação; I - Inserida na codificação da localidade superior",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "T",
+                "S",
+                "N",
+                "E",
+                "I"
+              ]
+            }
+          },
+          {
+            "name": "localidade",
+            "in": "query",
+            "description": "Nome da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepNaFaixa",
+            "in": "query",
+            "description": "CEP. Verifica se o CEP está dentro da faixa da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Número de registros por página. Máximo de 2000 itens por página",
+            "required": false,
+            "schema": {
+              "maximum": 2000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 50
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Atributos para ordenação. Exemplo: sort=nome,asc",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelLocalidadeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/localidades/agencias-modulares": {
+      "get": {
+        "tags": [
+          "Agência Modular"
+        ],
+        "summary": "Lista todas as localidades com agência modular",
+        "operationId": "listaAgenciasModulares",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "query",
+            "description": "Número da localidade",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "uf",
+            "in": "query",
+            "description": "Sigla da UF",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            },
+            "example": "GO"
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "description": "Tipo de localidade. M: Município; D: Distrito; P - Povoado",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M",
+                "D",
+                "P"
+              ]
+            },
+            "example": "M"
+          },
+          {
+            "name": "codificada",
+            "in": "query",
+            "description": "Localidade codificada. T: Todas; S: Códificada por logradouro; N: Não codificada; E - Em fase de codificação; I - Inserida na codificação da localidade superior",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "T",
+                "S",
+                "N",
+                "E",
+                "I"
+              ]
+            }
+          },
+          {
+            "name": "localidade",
+            "in": "query",
+            "description": "Nome da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cepNaFaixa",
+            "in": "query",
+            "description": "CEP. Verifica se o CEP está dentro da faixa da localidade",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Número de registros por página. Máximo de 2000 itens por página",
+            "required": false,
+            "schema": {
+              "maximum": 2000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 50
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Atributos para ordenação. Exemplo: sort=nome,asc",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelLocalidadeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/enderecos": {
+      "get": {
+        "tags": [
+          "Endereço (Deprected)"
+        ],
+        "summary": "Deprected: use /v2/enderecos?cep={cep1,cep2}",
+        "description": "Consulta os endereços de uma lista de ceps de no máximo 20 itens.",
+        "operationId": "listaCeps",
+        "parameters": [
+          {
+            "name": "cep",
+            "in": "query",
+            "description": "Número dos CEPs",
+            "required": true,
+            "schema": {
+              "maxItems": 20,
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": "63275000,63280000,63290000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CepResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/enderecos/{cep}": {
+      "get": {
+        "tags": [
+          "Endereço (Deprected)"
+        ],
+        "summary": "Deprected: use /v2/enderecos/{cep}",
+        "description": "Consulta o endereço de um CEP.",
+        "operationId": "consultaCEP",
+        "parameters": [
+          {
+            "name": "cep",
+            "in": "path",
+            "description": "Número dos CEPs",
+            "required": true,
+            "schema": {
+              "pattern": "[0-9]{8}",
+              "type": "string"
+            },
+            "example": 24210230
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CepResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/enderecos/intervalo": {
+      "get": {
+        "tags": [
+          "Endereço (Deprected)"
+        ],
+        "summary": "Deprected: use /v2/enderecos?cepInicial={cepInicial}&cepFinal={cepFinal}",
+        "description": "Consulta os endereços pertencentes a um intervalo de CEPs.",
+        "operationId": "listaCepsDeUmIntervalo",
+        "parameters": [
+          {
+            "name": "cepInicial",
+            "in": "query",
+            "description": "CEP inicial.",
+            "required": true,
+            "schema": {
+              "pattern": "[0-9]{8}",
+              "type": "string"
+            },
+            "example": 24210000
+          },
+          {
+            "name": "cepFinal",
+            "in": "query",
+            "description": "CEP final.",
+            "required": true,
+            "schema": {
+              "pattern": "[0-9]{8}",
+              "type": "string"
+            },
+            "example": 24210999
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CepResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/bairros/{uf}/localidades/{localidade}": {
+      "get": {
+        "tags": [
+          "Bairros"
+        ],
+        "summary": "Lista os bairros de uma localidade",
+        "operationId": "bairrosDaLocalidade",
+        "parameters": [
+          {
+            "name": "uf",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AM",
+                "AP",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MG",
+                "MS",
+                "MT",
+                "PA",
+                "PB",
+                "PE",
+                "PI",
+                "PR",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SE",
+                "SP",
+                "TO"
+              ]
+            }
+          },
+          {
+            "name": "localidade",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bairro",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BairroResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/atualizacao": {
+      "get": {
+        "tags": [
+          "Publicação do DNEC"
+        ],
+        "summary": "Retorna a data e hora da última publicação do DNEC",
+        "operationId": "atualizacao",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtualizacaoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EnderecoResponse": {
+        "type": "object",
+        "properties": {
+          "cep": {
+            "type": "string",
+            "description": "CEP: Código de endereçamento postal"
+          },
+          "uf": {
+            "type": "string",
+            "description": "Sigla da UF"
+          },
+          "numeroLocalidade": {
+            "type": "integer",
+            "description": "Número da localidade referente ao CEP",
+            "format": "int32"
+          },
+          "localidade": {
+            "type": "string",
+            "description": "Localidade"
+          },
+          "logradouro": {
+            "type": "string",
+            "description": "Logradouro"
+          },
+          "tipoLogradouro": {
+            "type": "string",
+            "description": "Tipo de logradouro: avenida, rua, conjunto, fazenda"
+          },
+          "nomeLogradouro": {
+            "type": "string",
+            "description": "Nome do logradouro"
+          },
+          "numeroLogradouro": {
+            "type": "string",
+            "description": "Número do logradouro"
+          },
+          "complemento": {
+            "type": "string",
+            "description": "Complemento"
+          },
+          "abreviatura": {
+            "type": "string",
+            "description": "Abreviatura"
+          },
+          "bairro": {
+            "type": "string",
+            "description": "Bairro"
+          },
+          "numeroLocalidadeSuperior": {
+            "type": "integer",
+            "description": "Número da localidade superior.",
+            "format": "int32"
+          },
+          "localidadeSuperior": {
+            "type": "string",
+            "description": "Nome da localidade superior."
+          },
+          "nome": {
+            "type": "string",
+            "description": "Nome de grandes usuários"
+          },
+          "siglaUnidade": {
+            "type": "string",
+            "description": "Sigla da unidade"
+          },
+          "tipoCEP": {
+            "type": "integer",
+            "description": "Tipo do CEP. 1: Localidade; 2: Logradouro; 3: Cep Promocional; 4 - Caixa Postal Comunitária; 5 - Grande Usuário; 6 - Unidade Operacional",
+            "format": "int32"
+          },
+          "cepAnterior": {
+            "type": "string",
+            "description": "Número do CEP anterior"
+          },
+          "distrito": {
+            "type": "string",
+            "description": "Distrito Postal"
+          },
+          "cepUnidadeOperacional": {
+            "type": "string",
+            "description": "CEP da unidade operacional"
+          },
+          "lado": {
+            "type": "string",
+            "description": "Lado"
+          },
+          "numeroInicial": {
+            "type": "integer",
+            "description": "Número incial",
+            "format": "int64"
+          },
+          "numeroFinal": {
+            "type": "integer",
+            "description": "Número final",
+            "format": "int64"
+          },
+          "clique": {
+            "type": "string",
+            "description": "Indica que é uma unidade de Clique e Retire"
+          },
+          "caixasPostais": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FaixaCaixaPostalResponse"
+            }
+          },
+          "locker": {
+            "type": "string",
+            "description": "Indica que é uma unidade de locker"
+          },
+          "agenciaModular": {
+            "type": "string",
+            "description": "Indica que é uma unidade de agência modular"
+          },
+          "txMsg": {
+            "type": "string",
+            "description": "Descricao da mensagem"
+          },
+          "inSituacaoLocalidade": {
+            "type": "string",
+            "description": "Situação da localidade: 0: Não codificada. 3: Em Fase de codificação"
+          }
+        }
+      },
+      "FaixaCaixaPostalResponse": {
+        "type": "object",
+        "properties": {
+          "nuInicial": {
+            "type": "integer",
+            "description": "Número inicial",
+            "format": "int32"
+          },
+          "nuFinal": {
+            "type": "integer",
+            "description": "Número Final",
+            "format": "int32"
+          }
+        }
+      },
+      "FaixaCepResponse": {
+        "type": "object",
+        "properties": {
+          "cepInicial": {
+            "type": "string",
+            "description": "CEP inicial da faixa"
+          },
+          "cepFinal": {
+            "type": "string",
+            "description": "CEP final da faixa"
+          },
+          "tipoFaixa": {
+            "type": "string",
+            "description": "T: Faixa total do município; C: Faixa exclusiva da sede urbana"
+          }
+        }
+      },
+      "UfResponse": {
+        "type": "object",
+        "properties": {
+          "uf": {
+            "type": "string",
+            "description": "Sigla da UF"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "faixas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FaixaCepResponse"
+            }
+          }
+        }
+      },
+      "BairroResponse": {
+        "type": "object",
+        "properties": {
+          "bairro": {
+            "type": "string",
+            "description": "Nome da bairro"
+          },
+          "numeroBairro": {
+            "type": "integer",
+            "description": "Número do bairro",
+            "format": "int32"
+          },
+          "faixas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FaixaCepBairroResponse"
+            }
+          }
+        }
+      },
+      "FaixaCepBairroResponse": {
+        "type": "object",
+        "properties": {
+          "cepInicial": {
+            "type": "string",
+            "description": "CEP inicial da faixa"
+          },
+          "cepFinal": {
+            "type": "string",
+            "description": "CEP final da faixa"
+          }
+        }
+      },
+      "CepResponse": {
+        "type": "object",
+        "properties": {
+          "cep": {
+            "type": "string",
+            "description": "CEP: Código de endereçamento postal"
+          },
+          "uf": {
+            "type": "string",
+            "description": "Sigla da UF"
+          },
+          "numeroLocalidade": {
+            "type": "integer",
+            "description": "Número da localidade referente ao CEP",
+            "format": "int32"
+          },
+          "localidade": {
+            "type": "string",
+            "description": "Localidade"
+          },
+          "logradouro": {
+            "type": "string",
+            "description": "Logradouro"
+          },
+          "tipoLogradouro": {
+            "type": "string",
+            "description": "Tipo de logradouro: avenida, rua, conjunto, fazenda"
+          },
+          "nomeLogradouro": {
+            "type": "string",
+            "description": "Nome do logradouro"
+          },
+          "numeroLogradouro": {
+            "type": "string",
+            "description": "Número do logradouro"
+          },
+          "complemento": {
+            "type": "string",
+            "description": "Complemento"
+          },
+          "abreviatura": {
+            "type": "string",
+            "description": "Abreviatura"
+          },
+          "bairro": {
+            "type": "string",
+            "description": "Bairro"
+          },
+          "numeroLocalidadeSuperior": {
+            "type": "integer",
+            "description": "Número da localidade superior.",
+            "format": "int32"
+          },
+          "codigoMunicipio": {
+            "type": "string",
+            "description": "Depreciado. Utilize numeroLocalidadeSuperior.",
+            "deprecated": true
+          },
+          "nomeMunicipio": {
+            "type": "string",
+            "description": "Depreciado. Utilize localidadeSuperior.",
+            "deprecated": true
+          },
+          "localidadeSuperior": {
+            "type": "string",
+            "description": "Nome da localidade superior."
+          },
+          "nome": {
+            "type": "string",
+            "description": "Nome de grandes usuários"
+          },
+          "siglaUnidade": {
+            "type": "string",
+            "description": "Sigla da unidade"
+          },
+          "tipoCEP": {
+            "type": "integer",
+            "description": "Tipo do CEP. 1: Localidade; 2: Logradouro; 3: Cep Promocional; 4 - Caixa Postal Comunitária; 5 - Grande Usuário; 6 - Unidade Operacional",
+            "format": "int32"
+          },
+          "cepAnterior": {
+            "type": "string",
+            "description": "Número do CEP anterior"
+          },
+          "distrito": {
+            "type": "string",
+            "description": "Distrito Postal"
+          },
+          "cepUnidadeOperacional": {
+            "type": "string",
+            "description": "CEP da unidade operacional"
+          },
+          "lado": {
+            "type": "string",
+            "description": "Lado"
+          },
+          "numeroInicial": {
+            "type": "integer",
+            "description": "Número incial",
+            "format": "int64"
+          },
+          "numeroFinal": {
+            "type": "integer",
+            "description": "Número final",
+            "format": "int64"
+          },
+          "clique": {
+            "type": "string",
+            "description": "Indica que CEP tem clique e retire"
+          },
+          "txMsg": {
+            "type": "string",
+            "description": "Descricao da mensagem"
+          }
+        }
+      },
+      "AtualizacaoResponse": {
+        "type": "object",
+        "properties": {
+          "atualizadoEm": {
+            "type": "string",
+            "description": "Data e hora da ultima publicação do DNEC",
+            "format": "date-time"
+          }
+        }
+      },
+      "LocalidadeResponse": {
+        "type": "object",
+        "properties": {
+          "numero": {
+            "type": "integer",
+            "description": "Número da localidade",
+            "format": "int32"
+          },
+          "uf": {
+            "type": "string",
+            "description": "Sigla da UF"
+          },
+          "localidade": {
+            "type": "string",
+            "description": "Nome da localidade"
+          },
+          "cep": {
+            "type": "string",
+            "description": "CEP"
+          },
+          "numeroLocalidadeSuperior": {
+            "type": "integer",
+            "description": "Número da localidade superior",
+            "format": "int32"
+          },
+          "localidadeSuperior": {
+            "type": "string",
+            "description": "Nome da localidade superior"
+          },
+          "codificada": {
+            "type": "string",
+            "description": "S: Códificada por logradouro; N: Não codificada; E - Em fase de codificação; I - Inserida na codificação da localidade superior"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "M: Município; D: Distrito; P - Povoado"
+          },
+          "codigoIbge": {
+            "type": "string",
+            "description": "Código do IBGE"
+          },
+          "faixas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FaixaCepResponse"
+            }
+          },
+          "bairros": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BairroResponse"
+            }
+          }
+        }
+      },
+      "PagedModelLocalidadeResponse": {
+        "type": "object",
+        "properties": {
+          "itens": {
+            "$ref": "#/components/schemas/LocalidadeResponse"
+          },
+          "links": {
+            "type": "array",
+            "description": "Links das páginas",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/PagedModelInfo"
+          }
+        }
+      },
+      "PagedModelEnderecoResponse": {
+        "type": "object",
+        "properties": {
+          "itens": {
+            "$ref": "#/components/schemas/EnderecoResponse"
+          },
+          "links": {
+            "type": "array",
+            "description": "Links das páginas",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/PagedModelInfo"
+          }
+        }
+      },
+      "PagedModelInfo": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "description": "Tamanho máximo de cada página",
+            "format": "int64"
+          },
+          "totalElements": {
+            "type": "integer",
+            "description": "Numero total de itens",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "Numero total de páginas",
+            "format": "int64"
+          },
+          "number": {
+            "type": "integer",
+            "description": "Numero da página atual",
+            "format": "int64"
+          }
+        }
+      },
+      "Link": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string"
+          },
+          "hreflang": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "deprecation": {
+            "type": "string"
+          },
+          "profile": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "templated": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MessageResponse": {
+        "type": "object",
+        "properties": {
+          "msgs": {
+            "type": "array",
+            "description": "Mensagens",
+            "items": {
+              "type": "string",
+              "description": "Mensagens"
+            }
+          },
+          "date": {
+            "type": "string",
+            "description": "Data e hora de ocorrência do evento.",
+            "format": "date-time"
+          },
+          "method": {
+            "type": "string",
+            "description": "Método HTTP que foi requisitado."
+          },
+          "path": {
+            "type": "string",
+            "description": "URL que foi requisitada."
+          },
+          "causa": {
+            "type": "string",
+            "description": "A causa da mensagem."
+          },
+          "stackTrace": {
+            "type": "string",
+            "description": "Detalhe da mensagem."
+          }
+        }
+      }
+    }
+  }
+}
