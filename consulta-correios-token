@@ -1,0 +1,487 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Token",
+    "description": "Serviço de geração de token, para acesso a diversas APIs dos Correios.\n\u003Cbr\u003E\u003C/br\u003E\n\u003Cb\u003EGeração do token\u003C/b\u003E\n\u003Cul\u003E\n    \u003Cli\u003EPara solicitar um token é necessário fazer uma requisição com \u003Cb\u003E'Authorization: Basic'\u003C/b\u003E, passando o usuário (Meu Correios) e senha (código de acesso).\u003C/li\u003E\n\u003C/ul\u003E\n\u003Cb\u003EExpiração do token\u003C/b\u003E\n\u003Cul\u003E\n    \u003Cli\u003EO token obtido tem uma data de expiração no atributo \u003Cb\u003E'expiraEm'\u003C/b\u003E, com isso o mesmo token pode ser utilizado até a data de expiração.\u003C/li\u003E\n    \u003Cli\u003ERecomendamos que solicite um novo token próximo da data de expiração, alguns minutos antes do token expirar.\u003C/li\u003E\n    \u003Cli\u003ESerá devolvido um \u003Cb\u003ENOVO\u003C/b\u003E token quando:\u003C/li\u003E\n    \u003Cul\u003E\n        \u003Cli\u003EO token estiver expirado;\u003C/li\u003E\n        \u003Cli\u003ECaso haja alguma alteração nas permissões de acesso;\u003C/li\u003E\n        \u003Cli\u003EDentro da tolerância de até \u003Cb\u003E30 minutos\u003C/b\u003E antes da data de expiração.\u003C/li\u003E\n        \u003Cli\u003ENos demais casos, será devolvido um token já solicitado.\u003C/li\u003E\n    \u003C/ul\u003E\n\u003C/ul\u003E\n\u003Cb\u003ELimite de solicitações\u003C/b\u003E\n\u003Cul\u003E\n    \u003Cli\u003EA API 'token' tem um limite de  \u003Cb\u003E3\u003C/b\u003E solitações por segundo.\u003C/li\u003E\n    \u003Cli\u003ECaso ultrapasse esse limite é disparado status HTTP 429 - Too Many Requests.\u003C/li\u003E\n    \u003Cli\u003EPara evitar receber o status HTTP 429, sempre verifique a data de expiração do token antes de enviar uma nova solicitação.\u003C/li\u003E\n\u003C/ul\u003E",
+    "version": "1.14.52",
+    "x-nuApi": 5,
+    "x-serviceId": "token",
+    "x-ambiente": "PRODUCAO"
+  },
+  "servers": [
+    {
+      "url": "https://api.correios.com.br/token",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Token",
+      "description": "Geração de tokens para acesso de APIs."
+    }
+  ],
+  "paths": {
+    "/v1/autentica": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Gera um token para acesso a APIs",
+        "operationId": "token",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/autentica/contrato": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Gera um token para acesso de APIS, cuja autorização seja pelo número de contrato",
+        "operationId": "tokenPorContrato",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/autentica/cartaopostagem": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Gera um token para acesso a APIs, cuja autorização seja por cartão de postagem",
+        "operationId": "tokenPorCartao",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartaoPostagemInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Caso ocorra alguma validação necessária por parte do requisitante.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Caso ocorra algum erro no servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiToken": {
+        "type": "object",
+        "properties": {
+          "api": {
+            "type": "integer",
+            "description": "Número da api",
+            "format": "int32"
+          },
+          "grupos": {
+            "type": "array",
+            "description": "Lista de grupos autorizados",
+            "items": {
+              "$ref": "#/components/schemas/GrupoToken"
+            }
+          },
+          "op": {
+            "type": "string",
+            "description": "Operação: de L - Somente Leitura; T - Acesso Total"
+          }
+        }
+      },
+      "CartaoPostagem": {
+        "type": "object",
+        "properties": {
+          "contrato": {
+            "type": "string",
+            "description": "Número do contrato"
+          },
+          "numero": {
+            "type": "string",
+            "description": "Número do Cartão de Postagem"
+          },
+          "dr": {
+            "type": "integer",
+            "description": "DR/SE do contrato",
+            "format": "int64"
+          },
+          "api": {
+            "type": "array",
+            "description": "Atributo será removido em breve",
+            "deprecated": true,
+            "items": {
+              "type": "integer",
+              "description": "Atributo será removido em breve",
+              "format": "int32",
+              "deprecated": true
+            }
+          },
+          "apis": {
+            "type": "array",
+            "description": "Lista de APIs restritas com autorização de acesso",
+            "items": {
+              "$ref": "#/components/schemas/ApiToken"
+            }
+          }
+        },
+        "description": "Cartão de postagem"
+      },
+      "Certificado": {
+        "type": "object",
+        "properties": {
+          "cn": {
+            "type": "string",
+            "description": "Common name do certificado ICP-BRASIL"
+          }
+        },
+        "description": "Certificado digital ICP-BRASIL"
+      },
+      "Contrato": {
+        "type": "object",
+        "properties": {
+          "numero": {
+            "type": "string",
+            "description": "Número do contrato"
+          },
+          "dr": {
+            "type": "integer",
+            "description": "DR/SE do contrato",
+            "format": "int64"
+          },
+          "api": {
+            "type": "array",
+            "description": "Atributo será removido em breve",
+            "deprecated": true,
+            "items": {
+              "type": "integer",
+              "description": "Atributo será removido em breve",
+              "format": "int32",
+              "deprecated": true
+            }
+          },
+          "apis": {
+            "type": "array",
+            "description": "Lista de APIs restritas com autorização de acesso",
+            "items": {
+              "$ref": "#/components/schemas/ApiToken"
+            }
+          }
+        },
+        "description": "Contrato"
+      },
+      "GrupoToken": {
+        "type": "object",
+        "properties": {
+          "co": {
+            "type": "string",
+            "description": "Código do grupo"
+          },
+          "urls": {
+            "type": "array",
+            "description": "Lista das urls permitidas",
+            "items": {
+              "type": "string",
+              "description": "Lista das urls permitidas"
+            }
+          },
+          "op": {
+            "type": "string",
+            "description": "Operação: de L - Somente Leitura; T - Acesso Total",
+            "enum": [
+              "L",
+              "T"
+            ]
+          }
+        },
+        "description": "Lista de grupos autorizados"
+      },
+      "Token": {
+        "type": "object",
+        "properties": {
+          "ambiente": {
+            "type": "string",
+            "description": "Ambiente",
+            "enum": [
+              "PRODUCAO",
+              "HOMOLOGACAO",
+              "DESENVOLVIMENTO",
+              "LOCAL"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "description": "Identificador do usuário"
+          },
+          "ip": {
+            "type": "string",
+            "description": "IP do requisitante"
+          },
+          "perfil": {
+            "type": "string",
+            "description": "Perfil: PF: Pessoa Física, PJ: Pessoa Jurídica",
+            "enum": [
+              "S",
+              "PJ",
+              "PF",
+              "A"
+            ]
+          },
+          "cnpj": {
+            "type": "string",
+            "description": "CNPJ do usuário"
+          },
+          "pjInternacional": {
+            "type": "integer",
+            "description": "Código internacional do usuário",
+            "format": "int64"
+          },
+          "cpf": {
+            "type": "string",
+            "description": "CPF do usuário"
+          },
+          "categoria": {
+            "type": "string"
+          },
+          "chv": {
+            "type": "integer",
+            "description": "Número da chave de acesso",
+            "format": "int32"
+          },
+          "cie": {
+            "type": "string",
+            "description": "CIE do usuário"
+          },
+          "certificado": {
+            "$ref": "#/components/schemas/Certificado"
+          },
+          "emissao": {
+            "type": "string",
+            "description": "Data e hora de emissão do token",
+            "format": "date-time"
+          },
+          "expiraEm": {
+            "type": "string",
+            "description": "Data e hora de expiração do token",
+            "format": "date-time"
+          },
+          "zoneOffset": {
+            "type": "string",
+            "description": "Deslocamento do GMT/UTC"
+          },
+          "contrato": {
+            "$ref": "#/components/schemas/Contrato"
+          },
+          "cartaoPostagem": {
+            "$ref": "#/components/schemas/CartaoPostagem"
+          },
+          "api": {
+            "type": "array",
+            "description": "Atributo será removido em breve",
+            "deprecated": true,
+            "items": {
+              "type": "integer",
+              "description": "Atributo será removido em breve",
+              "format": "int32",
+              "deprecated": true
+            }
+          },
+          "apiGrupos": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/ApiToken"
+            }
+          },
+          "apis": {
+            "type": "array",
+            "description": "Lista de APIs restritas com autorização de acesso",
+            "items": {
+              "$ref": "#/components/schemas/ApiToken"
+            }
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "token": {
+            "type": "string",
+            "description": "É o token que será usado na requisição, adicionar no header 'Authorization: Bearer \u003Cseu_token\u003E'"
+          }
+        }
+      },
+      "ContratoInput": {
+        "required": [
+          "numero"
+        ],
+        "type": "object",
+        "properties": {
+          "numero": {
+            "type": "string",
+            "description": "Número do contrato"
+          },
+          "dr": {
+            "type": "integer",
+            "description": "Número do Regional/DR/SE do contrato",
+            "format": "int64"
+          }
+        }
+      },
+      "CartaoPostagemInput": {
+        "required": [
+          "numero"
+        ],
+        "type": "object",
+        "properties": {
+          "numero": {
+            "type": "string",
+            "description": "Número do cartão de postagem"
+          },
+          "contrato": {
+            "type": "string",
+            "description": "Número do contrato"
+          },
+          "dr": {
+            "type": "integer",
+            "description": "Número do Regional/DR/SE do contrato",
+            "format": "int64"
+          }
+        }
+      },
+      "MessageResponse": {
+        "type": "object",
+        "properties": {
+          "msgs": {
+            "type": "array",
+            "description": "Mensagens",
+            "items": {
+              "type": "string",
+              "description": "Mensagens"
+            }
+          },
+          "date": {
+            "type": "string",
+            "description": "Data e hora de ocorrência do evento.",
+            "format": "date-time"
+          },
+          "method": {
+            "type": "string",
+            "description": "Método HTTP que foi requisitado."
+          },
+          "path": {
+            "type": "string",
+            "description": "URL que foi requisitada."
+          },
+          "causa": {
+            "type": "string",
+            "description": "A causa da mensagem."
+          },
+          "stackTrace": {
+            "type": "string",
+            "description": "Detalhe da mensagem."
+          }
+        }
+      }
+    }
+  }
+}
