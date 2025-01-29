@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "e2ba00cc-990e-48fb-8d4a-6e4412b8c420",
+		"name": "Token",
+		"description": "Serviço de geração de token, para acesso a diversas APIs dos Correios.\n<br></br>\n<b>Geração do token</b>\n<ul>\n    <li>Para solicitar um token é necessário fazer uma requisição com <b>'Authorization: Basic'</b>, passando o usuário (Meu Correios) e senha (código de acesso).</li>\n</ul>\n<b>Expiração do token</b>\n<ul>\n    <li>O token obtido tem uma data de expiração no atributo <b>'expiraEm'</b>, com isso o mesmo token pode ser utilizado até a data de expiração.</li>\n    <li>Recomendamos que solicite um novo token próximo da data de expiração, alguns minutos antes do token expirar.</li>\n    <li>Será devolvido um <b>NOVO</b> token quando:</li>\n    <ul>\n        <li>O token estiver expirado;</li>\n        <li>Caso haja alguma alteração nas permissões de acesso;</li>\n        <li>Dentro da tolerância de até <b>30 minutos</b> antes da data de expiração.</li>\n        <li>Nos demais casos, será devolvido um token já solicitado.</li>\n    </ul>\n</ul>\n<b>Limite de solicitações</b>\n<ul>\n    <li>A API 'token' tem um limite de  <b>3</b> solitações por segundo.</li>\n    <li>Caso ultrapasse esse limite é disparado status HTTP 429 - Too Many Requests.</li>\n    <li>Para evitar receber o status HTTP 429, sempre verifique a data de expiração do token antes de enviar uma nova solicitação.</li>\n</ul>",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20682462"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "autentica",
+					"item": [
+						{
+							"name": "contrato",
+							"item": [
+								{
+									"name": "Gera um token para acesso de APIS, cuja autorização seja pelo número de contrato",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"numero\": \"<string>\",\n  \"dr\": \"<long>\"\n}  ",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/autentica/contrato",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"autentica",
+												"contrato"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Created",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"numero\": \"<string>\",\n  \"dr\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/autentica/contrato",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"autentica",
+														"contrato"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"ambiente\": \"LOCAL\",\n  \"id\": \"<string>\",\n  \"ip\": \"<string>\",\n  \"perfil\": \"PF\",\n  \"cnpj\": \"<string>\",\n  \"pjInternacional\": \"<long>\",\n  \"cpf\": \"<string>\",\n  \"categoria\": \"<string>\",\n  \"chv\": \"<integer>\",\n  \"cie\": \"<string>\",\n  \"certificado\": {\n    \"cn\": \"<string>\"\n  },\n  \"emissao\": \"<dateTime>\",\n  \"expiraEm\": \"<dateTime>\",\n  \"zoneOffset\": \"<string>\",\n  \"contrato\": {\n    \"numero\": \"<string>\",\n    \"dr\": \"<long>\",\n    \"api\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"apis\": [\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      },\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"L\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      }\n    ]\n  },\n  \"cartaoPostagem\": {\n    \"contrato\": \"<string>\",\n    \"numero\": \"<string>\",\n    \"dr\": \"<long>\",\n    \"api\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"apis\": [\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"L\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      },\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      }\n    ]\n  },\n  \"api\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"apiGrupos\": [\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"T\"\n        }\n      ],\n      \"op\": \"<string>\"\n    },\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        }\n      ],\n      \"op\": \"<string>\"\n    }\n  ],\n  \"apis\": [\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"T\"\n        }\n      ],\n      \"op\": \"<string>\"\n    },\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"T\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        }\n      ],\n      \"op\": \"<string>\"\n    }\n  ],\n  \"paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"token\": \"<string>\"\n}"
+										},
+										{
+											"name": "Caso ocorra alguma validação necessária por parte do requisitante.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"numero\": \"<string>\",\n  \"dr\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/autentica/contrato",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"autentica",
+														"contrato"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+										},
+										{
+											"name": "Caso ocorra algum erro no servidor.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"numero\": \"<string>\",\n  \"dr\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/autentica/contrato",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"autentica",
+														"contrato"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "cartaopostagem",
+							"item": [
+								{
+									"name": "Gera um token para acesso a APIs, cuja autorização seja por cartão de postagem",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"numero\": \"<string>\",\n  \"contrato\": \"<string>\",\n  \"dr\": \"<long>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/autentica/cartaopostagem",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"autentica",
+												"cartaopostagem"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Created",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"numero\": \"<string>\",\n  \"contrato\": \"<string>\",\n  \"dr\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/autentica/cartaopostagem",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"autentica",
+														"cartaopostagem"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"ambiente\": \"LOCAL\",\n  \"id\": \"<string>\",\n  \"ip\": \"<string>\",\n  \"perfil\": \"PF\",\n  \"cnpj\": \"<string>\",\n  \"pjInternacional\": \"<long>\",\n  \"cpf\": \"<string>\",\n  \"categoria\": \"<string>\",\n  \"chv\": \"<integer>\",\n  \"cie\": \"<string>\",\n  \"certificado\": {\n    \"cn\": \"<string>\"\n  },\n  \"emissao\": \"<dateTime>\",\n  \"expiraEm\": \"<dateTime>\",\n  \"zoneOffset\": \"<string>\",\n  \"contrato\": {\n    \"numero\": \"<string>\",\n    \"dr\": \"<long>\",\n    \"api\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"apis\": [\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      },\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"L\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      }\n    ]\n  },\n  \"cartaoPostagem\": {\n    \"contrato\": \"<string>\",\n    \"numero\": \"<string>\",\n    \"dr\": \"<long>\",\n    \"api\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"apis\": [\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"L\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      },\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      }\n    ]\n  },\n  \"api\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"apiGrupos\": [\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"T\"\n        }\n      ],\n      \"op\": \"<string>\"\n    },\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        }\n      ],\n      \"op\": \"<string>\"\n    }\n  ],\n  \"apis\": [\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"T\"\n        }\n      ],\n      \"op\": \"<string>\"\n    },\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"T\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        }\n      ],\n      \"op\": \"<string>\"\n    }\n  ],\n  \"paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"token\": \"<string>\"\n}"
+										},
+										{
+											"name": "Caso ocorra alguma validação necessária por parte do requisitante.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"numero\": \"<string>\",\n  \"contrato\": \"<string>\",\n  \"dr\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/autentica/cartaopostagem",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"autentica",
+														"cartaopostagem"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+										},
+										{
+											"name": "Caso ocorra algum erro no servidor.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"numero\": \"<string>\",\n  \"contrato\": \"<string>\",\n  \"dr\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/autentica/cartaopostagem",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"autentica",
+														"cartaopostagem"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Gera um token para acesso a APIs",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/v1/autentica",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"autentica"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/autentica",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"autentica"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"ambiente\": \"LOCAL\",\n  \"id\": \"<string>\",\n  \"ip\": \"<string>\",\n  \"perfil\": \"PF\",\n  \"cnpj\": \"<string>\",\n  \"pjInternacional\": \"<long>\",\n  \"cpf\": \"<string>\",\n  \"categoria\": \"<string>\",\n  \"chv\": \"<integer>\",\n  \"cie\": \"<string>\",\n  \"certificado\": {\n    \"cn\": \"<string>\"\n  },\n  \"emissao\": \"<dateTime>\",\n  \"expiraEm\": \"<dateTime>\",\n  \"zoneOffset\": \"<string>\",\n  \"contrato\": {\n    \"numero\": \"<string>\",\n    \"dr\": \"<long>\",\n    \"api\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"apis\": [\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      },\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"L\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      }\n    ]\n  },\n  \"cartaoPostagem\": {\n    \"contrato\": \"<string>\",\n    \"numero\": \"<string>\",\n    \"dr\": \"<long>\",\n    \"api\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"apis\": [\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"L\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      },\n      {\n        \"api\": \"<integer>\",\n        \"grupos\": [\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          },\n          {\n            \"co\": \"<string>\",\n            \"urls\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"op\": \"T\"\n          }\n        ],\n        \"op\": \"<string>\"\n      }\n    ]\n  },\n  \"api\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"apiGrupos\": [\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"T\"\n        }\n      ],\n      \"op\": \"<string>\"\n    },\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        }\n      ],\n      \"op\": \"<string>\"\n    }\n  ],\n  \"apis\": [\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"T\"\n        }\n      ],\n      \"op\": \"<string>\"\n    },\n    {\n      \"api\": \"<integer>\",\n      \"grupos\": [\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"T\"\n        },\n        {\n          \"co\": \"<string>\",\n          \"urls\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"op\": \"L\"\n        }\n      ],\n      \"op\": \"<string>\"\n    }\n  ],\n  \"paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"token\": \"<string>\"\n}"
+								},
+								{
+									"name": "Caso ocorra alguma validação necessária por parte do requisitante.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/autentica",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"autentica"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+								},
+								{
+									"name": "Caso ocorra algum erro no servidor.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/autentica",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"autentica"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"msgs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"date\": \"<dateTime>\",\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"causa\": \"<string>\",\n  \"stackTrace\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.correios.com.br/token"
+		}
+	]
+}
